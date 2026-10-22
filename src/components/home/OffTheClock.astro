@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import { achievements } from '../../data/life';
+import DeckHead from '../DeckHead.astro';
+import Glyph from '../Glyph.astro';
+import SkinText from '../SkinText.astro';
+---
+
+<section class="sec" id="about" style="--deck:var(--accent)" aria-labelledby="about-title">
+  <DeckHead icon="d-star" title="About" headingId="about-title">
+    A bit about me outside of work
+  </DeckHead>
+  <div class="grid life-grid">
+    {achievements.map((a) => (
+      <article class:list={['card ach-card', a.span && `span-${a.span}`, { tall: a.photo }]}>
+        {a.photo && (
+          <div class="ach-photo">
+            <Image src={a.photo.src} alt={a.photo.alt} widths={[360, 720]} sizes="(max-width: 620px) 100vw, 360px" />
+          </div>
+        )}
+        <div class="ach-main">
+          <Glyph id={a.icon} class="ach-icon" />
+          <div>
+            <h3>{a.title}</h3>
+            <p>{a.text}</p>
+            {a.stats && (
+              <dl class="ach-stats">
+                {a.stats.map((s) => (
+                  <div>
+                    <dt>{s.label}</dt>
+                    <dd class:list={['v', s.parse && `wcl-${s.parse}`]}>{s.value}</dd>
+                    {s.note && <dd class="note">{s.note}</dd>}
+                  </div>
+                ))}
+              </dl>
+            )}
+            {!a.plain && (
+              <span class="unlocked">
+                <SkinText h="Achievement earned" g="Tale recorded" />
+              </span>
+            )}
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

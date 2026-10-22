@@ -1,0 +1,59 @@
+/* ================= responsiveness, both skins ================= */
+.card, .sub, .job{overflow-wrap:anywhere}
+.track{-webkit-mask-image:linear-gradient(90deg,#000 92%,transparent); mask-image:linear-gradient(90deg,#000 92%,transparent)}
+@media (min-width:1100px){ .track{-webkit-mask-image:none; mask-image:none} }
+@media (pointer:coarse){
+  .fbtn{padding:7px 14px} .slot{width:44px; height:44px}
+  .card:hover{transform:none}
+}
+.actionbar{bottom:calc(14px + env(safe-area-inset-bottom))}
+
+@media (max-width:1000px){
+  .hero{grid-template-columns:1fr; gap:34px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .now-list,.ach-stats,.links{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cols{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .subcards{grid-template-columns:1fr}
+  .job{grid-template-columns:1fr; gap:4px}
+  .job .when{padding-top:0}
+  .nav .wrap{flex-wrap:wrap; padding-top:11px; padding-bottom:11px; gap:9px 20px}
+  .nav-links{display:none}
+  .sec{padding-top:56px} .sec + .sec{margin-top:56px; padding-top:56px}
+  .slot kbd{display:none}
+  .actionbar{overflow-x:auto; bottom:10px}
+  .slot::after{display:none} /* the scrolling bar clips labels anyway, and they would widen it */
+}
+@media (max-width:620px){
+  .brand .guild{display:none}
+  .hero{padding:52px 20px 48px}
+  .grid{grid-template-columns:1fr}
+  .ach-card.span-2,.ach-card.span-3{grid-column:auto}
+  .ach-card.tall{grid-row:auto}
+  .ach-photo{aspect-ratio:4/3; flex:none}
+  .now-list,.links{grid-template-columns:1fr}
+  .contact-head{padding:20px}
+  .links{padding:18px 20px 22px}
+  .spec th{width:104px; white-space:normal}
+  .hc-body,.track-box{padding:16px}
+  .slot{width:42px; height:42px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none !important; animation:none !important}
+}
+
+/* Nine slots, the console and eight sections, must fit a 360px phone: 20px of margin, 2px of border, 12px of padding, 32px of gaps. */
+@media (max-width:620px){
+  .actionbar{gap:4px; padding:6px}
+  .slot{--s:min(38px, calc((100vw - 70px) / 10)); width:var(--s); height:var(--s)}
+  .slot svg{width:20px; height:20px}
+}
+
+/* Phones get the portrait cut of the hero art, drawn for that shape rather than scaled up. */
+@media (max-width:760px){
+  .hero-bg{background-image:var(--art-night-tall)}
+  .hero-bg::before{background-image:var(--art-night-twinkle-tall)}
+  html[data-skin="light"] .hero-bg{background-image:var(--art-ink-tall)}
+}

@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import { decks, type Project } from '../../data/projects';
+import { newTab } from '../../data/site';
+
+interface Props {
+  project: Project;
+  /** Featured row: the one-line pitch instead of the full summary. */
+  compact?: boolean;
+  /** Slugs of published breakdowns; the card links its own if it is one of them. */
+  breakdowns?: ReadonlySet<string>;
+}
+const { project: p, compact = false, breakdowns } = Astro.props;
+
+const stateClass = { progress: 's-live', live: 's-done', shipped: 's-ship', archived: 's-archive' }[p.state.kind];
+const deckTitle = decks.find((d) => d.id === p.deck)?.title ?? '';
+const breakdown = p.breakdown && breakdowns?.has(p.breakdown) ? `/breakdowns/${p.breakdown}` : undefined;
+---
+
+<article class="card" data-card data-tags={p.tags.join(' ')} data-q={p.quality}>
+  <div class="card-head">
+    <span class="ref">{p.ref}</span>
+    <span class={`state ${stateClass}`}>{p.state.label}</span>
+  </div>
+  {p.image && (
+    <div class="shot">
+      <Image
+        src={p.image.src}
+        alt={p.image.alt}
+        widths={[380, 640]}
+        sizes="(max-width: 620px) 100vw, (max-width: 1000px) 50vw, 380px"
+        style={p.image.position ? `object-position:${p.image.position}` : undefined}
+      />
+    </div>
+  )}
+  <div class="card-body">
+    <h3>{p.title}</h3>
+    <div class="role">{p.role}</div>
+    <p>{compact && p.pitch ? p.pitch : p.summary}</p>
+    {p.stack.length > 0 && (
+      <div class="tags">
+        {p.stack.map((s) => (
+          <span class="tag">{s}</span>
+        ))}
+      </div>
+    )}
+    <div class="card-foot">
+      {breakdown ? (
+        <a href={breakdown}>Breakdown</a>
+      ) : p.source ? (
+        <a href={p.source} {...newTab(p.source)}>
+          Code
+        </a>
+      ) : (
+        <span>{deckTitle}</span>
+      )}
+      {p.link ? (
+        <a href={p.link.href} {...newTab(p.link.href)}>
+          {p.link.label}
+        </a>
+      ) : (
+        <span class="muted">{p.offline ? 'Offline' : p.state.kind === 'progress' ? 'Coming soon' : 'Private'}</span>
+      )}
+    </div>
+  </div>
+</article>

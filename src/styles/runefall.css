@@ -1,0 +1,47 @@
+/* ---------- Milestone track ---------- */
+.track-box{background:var(--bg-deep); border-radius:6px; padding:20px 22px; margin-bottom:22px}
+.track-top{display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; font-family:var(--ui)}
+.track-top h3{font-size:1.1rem; color:var(--accent)}
+html[data-skin="light"] .track-top h3{font-size:1.5rem; font-weight:500}
+.track-top .of{color:var(--text-3); font-size:1.05rem}
+.track{list-style:none; display:flex; margin:20px 0 0; padding:0 0 4px; overflow-x:auto}
+.track li{flex:1 0 108px; position:relative; padding-top:26px; font-family:var(--ui); font-size:.98rem; color:var(--text-3); text-align:center; line-height:1.25}
+.track li::before{content:""; position:absolute; top:9px; left:0; right:0; height:3px; background:var(--line-strong)}
+.track li:first-child::before{left:50%}
+.track li:last-child::before{right:50%}
+.track li::after{content:""; position:absolute; top:3px; left:50%; margin-left:-7px; width:14px; height:14px; border-radius:50%; background:var(--bg-deep); border:2px solid var(--line-strong)}
+.track li.done{color:var(--text-2)}
+.track li.done::before{background:linear-gradient(var(--gold-hi),var(--gold-lo))}
+.track li.done::after{background:radial-gradient(circle at 40% 35%,var(--gold-hi),var(--accent) 60%,var(--gold-lo)); border-color:var(--gold-lo)}
+.track li.now{color:var(--accent); font-weight:700}
+.track li.now::before{background:linear-gradient(90deg,var(--accent) 50%,var(--line-strong) 50%)}
+.track li.now::after{background:var(--bg-deep); border-color:var(--accent); box-shadow:0 0 0 4px var(--accent-soft), 0 0 14px var(--accent)}
+
+/* ---------- Hero card ---------- */
+.hero-card{border-radius:8px; border-top:3px solid var(--q-legend); background:var(--surface)}
+.hc-head{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:11px 18px; border-bottom:1px solid var(--gold-lo); font-family:var(--mono); font-size:.78rem; color:var(--text-3); background:var(--bg-deep); border-radius:6px 6px 0 0; flex-wrap:wrap}
+.hc-head .kind{font-family:var(--display); font-size:.95rem; letter-spacing:.06em; color:var(--q-legend); font-weight:700}
+html[data-skin="light"] .hc-head .kind{font-size:1.3rem; font-weight:500; letter-spacing:0}
+.hc-body{padding:22px}
+.hc-body > * + *{margin-top:26px}
+.fig{margin:0; border:1px solid var(--gold-lo); border-radius:6px; overflow:hidden; background:var(--bg-deep)}
+.fig img{width:100%; height:auto}
+.fig figcaption{padding:10px 14px; font-family:var(--ui); font-size:1rem; color:var(--text-3); border-top:1px solid var(--line)}
+.prose{max-width:68ch}
+.prose p + p{margin-top:13px}
+.spec{width:100%; border-collapse:collapse; font-size:.97rem}
+.spec th,.spec td{padding:12px 0; border-top:1px solid var(--line); vertical-align:top; text-align:left}
+.spec tr:last-child th,.spec tr:last-child td{border-bottom:1px solid var(--line)}
+.spec th{font-family:var(--ui); font-weight:600; font-size:1.04rem; color:var(--accent); width:150px; padding-right:20px; white-space:nowrap}
+.spec td{max-width:64ch}
+.subcards{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px}
+.sub{background:var(--bg-deep); border:1px solid var(--line-strong); border-radius:6px; padding:15px 16px}
+.sub .ref{font-family:var(--mono); font-size:.74rem; display:block; margin-bottom:6px}
+.sub :is(h3,h4){font-size:1.02rem; margin-bottom:6px; color:var(--accent)}
+html[data-skin="light"] .sub :is(h3,h4){font-size:1.35rem; font-weight:500}
+.sub p{font-size:.94rem; line-height:1.5}
+.h4{font-size:1.1rem; margin-bottom:12px; color:var(--accent)}
+
+/* ---------- Forge ---------- */
+
+

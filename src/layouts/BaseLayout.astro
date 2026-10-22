@@ -1,0 +1,92 @@
+---
+import '@fontsource/cinzel/600.css';
+import '@fontsource/cinzel/700.css';
+import '@fontsource/zen-antique/latin-400.css';
+import '@fontsource/crimson-pro/400.css';
+import '@fontsource/crimson-pro/600.css';
+import '@fontsource/crimson-pro/400-italic.css';
+import '@fontsource/barlow/400.css';
+import '@fontsource/barlow/500.css';
+import '@fontsource/barlow/600.css';
+import '@fontsource/barlow-condensed/600.css';
+import '@fontsource/barlow-condensed/700.css';
+import '../styles/index.css';
+
+import { site } from '../data/site';
+import { artworks } from '../scripts/lib/art';
+import ActionBar from '../components/ActionBar.astro';
+import Console from '../components/Console.astro';
+import Icons from '../components/Icons.astro';
+import Nav from '../components/Nav.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** The home page uses in-page anchors for the nav and action bar. */
+  home?: boolean;
+  /** Target of the skip link. */
+  skipTo?: string;
+}
+
+const { title = site.title, description = site.description, home = false, skipTo = '#main' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/og.png', Astro.site);
+/** Build-time art (src/pages/art), exposed to CSS as --art-<name>. Inline, so Vite leaves the URLs alone. */
+const artVars = Object.keys(artworks)
+  .map((name) => `--art-${name}:url(/art/${name}.svg)`)
+  .join(';');
+---
+
+<!doctype html>
+<html lang="en" data-skin="dark" data-version={site.version}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0F1522" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="application/rss+xml" title={`${site.name}: blog`} href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="color-scheme" content="dark light" />
+    <!-- The site has its own dark and light modes; ask Dark Reader not to repaint it. -->
+    <meta name="darkreader-lock" />
+    <!-- Apply the mode before first paint: the saved choice, else the system setting. -->
+    <script is:inline>
+      (function () {
+        var mode = null;
+        try {
+          mode = localStorage.getItem('skin');
+          if (mode === 'heroic') mode = 'dark';
+          if (mode === 'grimdark') mode = 'light';
+          if (mode === 'dark' || mode === 'light') localStorage.setItem('skin', mode);
+          else mode = null;
+        } catch (e) {}
+        if (!mode) mode = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-skin', mode);
+      })();
+    </script>
+  </head>
+  <body style={artVars}>
+    <a class="skip" href={skipTo}>
+      Skip to content
+    </a>
+    <Icons />
+    <Nav home={home} />
+    <slot />
+    <ActionBar home={home} />
+    <Console />
+  </body>
+</html>

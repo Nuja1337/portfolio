@@ -1,0 +1,123 @@
+/* ================= Dark and light: the hero's art carried through the whole page =================
+   Dark mode is a Berserk night: black and white with blood-red accents, a starfield under everything, a red
+   corona on the moon, and an eclipse to close. Light mode is sumi ink on paper with bamboo: brush-drawn frames
+   and buttons, bamboo painted at the edges, and bamboo green as its accent. In both, the accent marks what to
+   read first: section markers, card titles, labels, stats, and icons. Images keep their natural color.
+   Every texture is a static SVG from src/scripts/lib/art.ts. */
+
+/* ---------- Dark ---------- */
+body{background:var(--bg) var(--art-stars-tile) center top/1200px 1200px repeat}
+html:not([data-skin="light"]){
+  --noise-a:.06; /* heavier print grain, like ink on cheap manga paper */
+  --accent:#E5484F; --accent-fill:#B3161E; --accent-ink:#FFFFFF; --accent-soft:rgba(229,72,79,.12);
+  --q-legend:#E5484F; --q-epic:#F2F2F2; --q-rare:#9C9CA1; --q-green:#EDEDED;
+  --parch-a:#111114; --parch-b:#0A0A0C; --parch-ink:#E2E2E2; --parch-title:#F4F4F4; --parch-rule:rgba(255,255,255,.16);
+  --ql:#E5484F; --qe:#F2F2F2; --qr:#A6A6AB;
+}
+
+.sec + .sec{border-top:0; position:relative}
+.sec + .sec::before{content:""; position:absolute; left:0; right:0; top:-32px; height:64px; pointer-events:none; background:var(--art-rule-night) center/min(100%,1200px) 64px no-repeat}
+html:not([data-skin="light"]) .deck-head{position:relative; border-bottom:1px solid var(--line); padding-bottom:22px}
+html:not([data-skin="light"]) .deck-head::after{content:""; position:absolute; left:50%; bottom:-5px; width:9px; height:9px; margin-left:-4.5px; border-radius:50%; background:var(--accent-fill); box-shadow:0 0 0 4px var(--bg), 0 0 14px rgba(229,72,79,.5)}
+
+
+/* Manga screentone on the card headers. */
+html:not([data-skin="light"]) .card-head{background-image:radial-gradient(rgba(235,235,235,.08) .8px, transparent 1.2px); background-size:4px 4px}
+
+/* Red where the eye should land. */
+html:not([data-skin="light"]) .btn.primary{background:var(--accent-fill); border-color:var(--accent-fill); color:#FFFFFF}
+html:not([data-skin="light"]) .btn.primary:hover{filter:brightness(1.12); color:#FFFFFF}
+html:not([data-skin="light"]) .ach-icon{background:linear-gradient(#E5484F,#7E0E13); color:#FFFFFF}
+html:not([data-skin="light"]) .skin button[aria-pressed="true"]{background:#F2F2F2; color:#0A0A0C}
+html:not([data-skin="light"]) .soon{background:var(--accent-fill); color:#FFFFFF}
+
+/* The last thing on the page: dark mode's eclipse, light mode's bamboo grove. */
+.finale{height:340px; margin-top:10px; pointer-events:none; background:var(--art-finale-night) center bottom/cover no-repeat}
+main:has(> .finale){padding-bottom:0}
+
+/* ---------- Accents shared by both modes ---------- */
+.deck-spine::before{background:var(--accent)}
+.deck-spine svg, .brand svg, .cat-head svg, .teaser-cats svg{color:var(--accent)}
+.brand .guild, .pguild, .count, .job .when, .spec th, .hc-head .kind, .now-list dt{color:var(--accent)}
+.ach-stats .v{color:var(--parse, var(--accent))}
+.count{border-color:var(--accent)}
+.now-card{border-left-color:var(--accent)}
+.now-dot{background:var(--accent); box-shadow:0 0 0 3px var(--accent-soft)}
+.slot:hover, .slot:focus-visible{color:var(--accent)}
+
+/* ---------- Light: ink on paper, with bamboo ---------- */
+html:root[data-skin="light"]{
+  --bg:#F4F1E9; --bg-deep:#EAE6DC; --surface:#FBFAF6; --surface-2:#F7F5EF;
+  --line:rgba(20,19,18,.16); --line-strong:rgba(20,19,18,.38);
+  --text:#141312; --text-2:#3B3936; --text-3:#5F5C57;
+  --accent:#3F6B2F; --accent-fill:#3F6B2F; --accent-ink:#F7F5EF; --accent-soft:rgba(63,107,47,.12);
+  --gold-hi:#141312; --gold-lo:rgba(20,19,18,.45);
+  --doc:#FCFBF7; --doc-2:#F3F0E8; --doc-ink:#141312; --doc-ink-2:#3B3936; --doc-ink-3:#5F5C57;
+  --doc-rule:rgba(20,19,18,.22); --doc-link:#3F6B2F;
+  --rubric:#3F6B2F; --wax:#3F6B2F;
+  --q-legend:#3F6B2F; --q-epic:#141312; --q-rare:#6B6863; --q-green:#3F6B2F;
+  --parch-a:#FCFBF7; --parch-b:#F1EEE6; --parch-ink:#141312; --parch-title:#141312; --parch-rule:rgba(20,19,18,.3);
+  --ql:#3F6B2F; --qe:#141312; --qr:#6B6863;
+  font-synthesis-weight:none;
+}
+/* The action bar and console stay as small blocks of ink. */
+[data-skin="light"] :is(.actionbar, .con){
+  --bg:#0E0D0C; --bg-deep:#080706; --surface:#161514; --surface-2:#1D1C1A;
+  --line:#34322F; --line-strong:#4E4B47;
+  --text:#EDEAE3; --text-2:#BDB9B1; --text-3:#98948C;
+  --accent:#A9C98C; --accent-ink:#0E0D0C; --accent-soft:rgba(169,201,140,.14); --gold-hi:#EDEAE3; --gold-lo:#4E4B47;
+}
+
+html[data-skin="light"] body{background:var(--bg) var(--art-paper-tile) 0 0/600px 600px repeat}
+[data-skin="light"] body::before{display:none}
+[data-skin="light"] body::after{background:radial-gradient(ellipse at 50% 40%, transparent 65%, rgba(40,30,15,.07) 100%)}
+[data-skin="light"] .hero-bg{background-color:var(--bg); border-bottom:0}
+/* Keep the bamboo at the edges: a paper wash over the middle so no leaf ever sits behind the text. */
+[data-skin="light"] .hero-bg::after{content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(90deg, transparent 0, rgba(244,241,233,.94) max(9%, calc(50% - 560px)), rgba(244,241,233,.94) min(91%, calc(50% + 560px)), transparent 100%)}
+[data-skin="light"] .hero{z-index:2}
+[data-skin="light"] .sec + .sec::before{background-image:var(--art-rule-ink)}
+[data-skin="light"] .finale{background-image:var(--art-finale-ink)}
+
+/* The nav is paper too, underlined with a single brush line. */
+html[data-skin="light"] .nav{background:rgba(244,241,233,.97); border-bottom:0}
+[data-skin="light"] .nav::after{content:""; position:absolute; left:0; right:0; bottom:-5px; height:10px; pointer-events:none; background:var(--art-brush-line) center/100% 100% no-repeat}
+
+/* Section heads: a bamboo-green dot on the rule, and black ink tabs with green marks. */
+[data-skin="light"] .deck-head{border-bottom-color:rgba(20,19,18,.5)}
+[data-skin="light"] .deck-head::after{width:10px; height:10px; margin-left:-5px; bottom:-5px; background:var(--accent); border-radius:50%; box-shadow:0 0 0 4px var(--bg)}
+[data-skin="light"] .deck-spine{background:#141312; border-color:#000; box-shadow:0 0 0 1px #000, 4px 4px 0 -1px var(--bg), 5px 5px 0 -1px #141312}
+[data-skin="light"] .deck-spine::before{background:#A9C98C}
+[data-skin="light"] .deck-spine svg{color:#A9C98C}
+[data-skin="light"] .ach-icon{background:radial-gradient(circle at 35% 35%,#5C8C47,#2A4A20 70%); color:#F7F5EF}
+
+/* Panels: white paper inside a brush-drawn frame. */
+[data-skin="light"] .doc-wrap{filter:drop-shadow(0 6px 12px rgba(40,30,15,.16))}
+[data-skin="light"] :is(.card, .loadout, .track-box, .hero-card, .ledger, .sub){
+  background:linear-gradient(180deg,var(--doc),var(--doc-2)); box-shadow:0 4px 12px rgba(40,30,15,.08)}
+[data-skin="light"] :is(.card, .loadout, .track-box, .ledger, .sub){
+  border:2px solid transparent; border-radius:0; border-image:var(--art-brush-frame) 30 / 14px / 6px stretch}
+[data-skin="light"] .card:hover{box-shadow:0 12px 22px rgba(40,30,15,.14)}
+[data-skin="light"] :is(.filters, .cat-nav a, .links li){background:rgba(255,255,255,.5); border-color:var(--line-strong)}
+[data-skin="light"] .banner{background:var(--accent-soft); border-color:var(--accent)}
+[data-skin="light"] .soon{background:var(--accent); color:#F7F5EF}
+html[data-skin="light"] :is(.count, .brand .guild, .pguild){color:var(--accent); border-color:var(--accent)}
+
+/* Buttons are brush strokes: a bamboo-green swash for the main one, a brushed ink outline for the rest. */
+html[data-skin="light"] .btn.primary{background:var(--art-brush-button-bamboo) center/100% 100% no-repeat; border-color:transparent; color:#F7F5EF; box-shadow:none}
+html[data-skin="light"] :is(.btn:not(.primary), .hero .btn:not(.primary)){background:transparent; color:#141312; border:1px solid transparent; border-image:var(--art-brush-frame) 30 / 10px / 3px stretch; box-shadow:none}
+html[data-skin="light"] :is(.btn:not(.primary), .hero .btn:not(.primary)):hover{background:var(--art-brush-button) center/100% 100% no-repeat; color:#F7F5EF}
+html[data-skin="light"] .skin button[aria-pressed="true"]{background:#141312; color:#F7F5EF}
+
+/* Zen Antique is wider than the blackletter it replaces, so the headings come back down to size. */
+html[data-skin="light"] .hero h1{font-size:clamp(2.2rem,4.6vw,3.5rem); line-height:1.08; max-width:15ch}
+html[data-skin="light"] .page-head h1{font-size:clamp(2.1rem,4.4vw,3rem)}
+html[data-skin="light"] .deck-head h2{font-size:1.9rem}
+html[data-skin="light"] :is(.card h3, .job h3, .track-top h3){font-size:1.2rem}
+html[data-skin="light"] :is(.loadout h3, .sub h3, .sub h4, .group-head h3){font-size:1.12rem}
+html[data-skin="light"] .pname{font-size:1.2rem}
+html[data-skin="light"] .hc-head .kind{font-size:1.1rem}
+html[data-skin="light"] .contact-line{font-size:clamp(1.35rem,2.6vw,1.85rem)}
+html[data-skin="light"] .brand{font-size:1.15rem}
+
+/* Images keep their natural color in both modes (this undoes the old sepia treatment). */
+html[data-skin="light"] .shot img{filter:none}

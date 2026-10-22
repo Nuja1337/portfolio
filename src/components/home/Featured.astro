@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import { featuredProjects } from '../../data/projects';
+import DeckHead from '../DeckHead.astro';
+import ProjectCard from './ProjectCard.astro';
+
+const published = new Set(
+  (await getCollection('breakdowns', ({ data }) => import.meta.env.DEV || !data.draft)).map((b) => b.id),
+);
+---
+
+<section class="sec" id="featured" style="--deck:var(--q-legend)" aria-labelledby="featured-title">
+  <DeckHead icon="i-crown" title="Featured" headingId="featured-title">
+    The two things I'm building now, and two live web apps.
+  </DeckHead>
+  <div class="grid featured-grid">
+    {featuredProjects.map((p) => (
+      <ProjectCard project={p} compact breakdowns={published} />
+    ))}
+  </div>
+</section>

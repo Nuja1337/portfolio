@@ -1,0 +1,97 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+import RunefallDesign from '../../components/RunefallDesign.astro';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+  const breakdowns = await getCollection('breakdowns', ({ data }) => import.meta.env.DEV || !data.draft);
+  return breakdowns.map((b) => ({ params: { slug: b.id }, props: { breakdown: b } }));
+}
+
+interface Props {
+  breakdown: CollectionEntry<'breakdowns'>;
+}
+
+const { breakdown } = Astro.props;
+const { Content, headings } = await render(breakdown);
+/** "On this page": Runefall's design sections come first, then every section of the write-up. */
+const toc = [
+  ...(breakdown.id === 'runefall'
+    ? [
+        { slug: 'overview', text: 'Overview' },
+        { slug: 'roadmap', text: 'Roadmap' },
+        { slug: 'at-a-glance', text: 'At a glance' },
+        { slug: 'core-tenets', text: 'Core tenets' },
+      ]
+    : []),
+  ...headings.filter((h) => h.depth === 2),
+];
+const meta = [
+  { k: 'Role', v: breakdown.data.role },
+  { k: 'Timeline', v: breakdown.data.timeline },
+  { k: 'Stack', v: breakdown.data.stack.join(', ') },
+  { k: 'Status', v: breakdown.data.status },
+];
+---
+
+<BaseLayout title={`${breakdown.data.title} breakdown | ${site.name}`} description={breakdown.data.description}>
+  <main id="main" class="wrap page">
+    <article class="post breakdown">
+      <header class="page-head">
+        <div class="crumb">
+          <a href="/">Home</a> / <a href="/#featured">Projects</a> / {breakdown.data.title}
+        </div>
+        <span class="bd-kind">Breakdown {breakdown.data.draft && <span class="draft-tag">draft</span>}</span>
+        <h1>{breakdown.data.title}</h1>
+        <p class="bd-lede">{breakdown.data.description}</p>
+        <dl class="bd-meta">
+          {meta.map((m) => (
+            <div>
+              <dt>{m.k}</dt>
+              <dd>{m.v}</dd>
+            </div>
+          ))}
+        </dl>
+      </header>
+      <figure class="bd-hero">
+        <Image
+          src={breakdown.data.image}
+          alt={breakdown.data.imageAlt}
+          widths={[640, 1100, 1600]}
+          sizes="(max-width: 1180px) calc(100vw - 48px), 1132px"
+          loading="eager"
+        />
+        {breakdown.data.caption && <figcaption>{breakdown.data.caption}</figcaption>}
+      </figure>
+      {toc.length > 3 && (
+        <nav class="bd-toc" aria-label="On this page">
+          <span class="bd-toc-label">On this page</span>
+          {toc.map((h) => (
+            <a href={`#${h.slug}`}>{h.text}</a>
+          ))}
+        </nav>
+      )}
+      {breakdown.id === 'runefall' && <RunefallDesign />}
+      <div class="post-body">
+        <Content />
+      </div>
+    </article>
+    <p style="margin-top:40px">
+      <a class="btn" href="/#featured">
+        Back to projects
+      </a>
+    </p>
+    <Footer />
+  </main>
+</BaseLayout>
+
+<script>
+  import { opensNewTab } from '../../data/site';
+  // Breakdown bodies follow the site-wide rule: other sites and files open in a new tab.
+  for (const a of document.querySelectorAll<HTMLAnchorElement>('.post-body a[href]')) {
+    if (opensNewTab(a.getAttribute('href') ?? '')) Object.assign(a, { target: '_blank', rel: 'noopener' });
+  }
+</script>

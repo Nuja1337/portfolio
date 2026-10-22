@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import { boardProjects as projects, decks, filters } from '../../data/projects';
+import DeckHead from '../DeckHead.astro';
+import ProjectCard from './ProjectCard.astro';
+
+const grouped = decks
+  .map((d) => ({ ...d, cards: projects.filter((p) => p.deck === d.id) }))
+  .filter((d) => d.cards.length > 0);
+const published = new Set(
+  (await getCollection('breakdowns', ({ data }) => import.meta.env.DEV || !data.draft)).map((b) => b.id),
+);
+---
+
+<section class="sec" id="projects" style="--deck:var(--q-green)" aria-labelledby="projects-title" data-board>
+  <DeckHead icon="d-pad" title="Projects" count={`${projects.length} cards`} headingId="projects-title">
+    Live apps, shipped games, small tools, and design work.
+  </DeckHead>
+
+  <div class="filters" role="group" aria-label="Filter cards">
+    <span class="lab">Filter</span>
+    {filters.map((f) => (
+      <button class="fbtn" type="button" data-filter={f.id} aria-pressed={f.id === 'all' ? 'true' : 'false'}>
+        {f.label}
+      </button>
+    ))}
+    <span class="fcount" data-filter-count aria-live="polite">
+      {projects.length} cards
+    </span>
+  </div>
+
+  <div class="board-scroll" data-board-scroll tabindex="0" role="region" aria-label="Project cards, scrollable">
+    {grouped.map((d) => (
+      <section class="deck-group" data-deck={d.id} aria-labelledby={`deck-${d.id}`}>
+        <div class="group-head">
+          <h3 id={`deck-${d.id}`}>{d.title}</h3>
+          <span class="gm">{d.meta}</span>
+          <span class="gc">
+            <span data-group-count>{d.cards.length}</span> cards
+          </span>
+        </div>
+        <div class="grid">
+          {d.cards.map((p) => (
+            <ProjectCard project={p} breakdowns={published} />
+          ))}
+        </div>
+      </section>
+    ))}
+    <p class="empty" data-empty hidden>
+      No cards match that filter.
+    </p>
+  </div>
+  <p class="scroll-hint">Scroll the list to see every card.</p>
+</section>
+
+<script>
+  import { initBoard } from '../../scripts/board';
+  const root = document.querySelector<HTMLElement>('[data-board]');
+  if (root) initBoard(root);
+</script>

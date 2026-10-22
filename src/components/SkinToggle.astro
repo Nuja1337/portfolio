@@ -1,0 +1,23 @@
+<div class="skin" role="group" aria-label="Color mode">
+  <button type="button" data-skin-set="dark" aria-pressed="true" aria-label="Dark mode" title="Dark mode">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z" fill="currentColor"></path>
+    </svg>
+  </button>
+  <button type="button" data-skin-set="light" aria-pressed="false" aria-label="Light mode" title="Light mode">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="4.4" fill="currentColor"></circle>
+      <path
+        d="M12 2.2v2.6M12 19.2v2.6M2.2 12h2.6M19.2 12h2.6M5.1 5.1l1.8 1.8M17.1 17.1l1.8 1.8M5.1 18.9l1.8-1.8M17.1 6.9l1.8-1.8"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+      ></path>
+    </svg>
+  </button>
+</div>
+
+<script>
+  import { initSkinToggle } from '../scripts/skin';
+  initSkinToggle();
+</script>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.75 64 64">
+  <!-- Chuken Studios mark: a faceted Akita head (忠犬, chūken, "loyal dog"). The nav draws the same head (Icons.astro, g-mark). -->
+  <g>
+    <path d="M14 6L25 15L32 14L39 15L50 6L55 20L60 30L61 38L54 48L40 56.5H24L10 48L3 38L4 30L9 20Z" fill="#EDEAE3" stroke="#E5484F" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M32 41H35L37.5 35L46 37L60.7 34.5L61 38L54 48L40 56.5H32Z" fill="#000" opacity=".07"/>
+    <path d="M14 6L25 15L32 14L39 15L50 6L55 20L60 30L60.7 34.5L46 37L37.5 35L35 41H29L26.5 35L18 37L3.3 34.5L4 30L9 20Z" fill="#E5484F"/>
+    <path d="M32 14L39 15L50 6L55 20L60 30L60.7 34.5L46 37L37.5 35L35 41H32Z" fill="#000" opacity=".2"/>
+    <path d="M14.6 10.5L22.5 15.6L11 19.5ZM49.4 10.5L41.5 15.6L53 19.5Z" fill="#000" opacity=".3"/>
+    <path d="M16.5 24.5L21 22.2L26 23.8L21 25.9ZM47.5 24.5L43 22.2L38 23.8L43 25.9Z" fill="#EDEAE3"/>
+    <path d="M16 29.2L26 31.2L20.5 33.8ZM48 29.2L38 31.2L43.5 33.8ZM26.5 40.5H37.5L34.5 46H29.5Z" fill="#0B0B0D"/>
+  </g>
+</svg>

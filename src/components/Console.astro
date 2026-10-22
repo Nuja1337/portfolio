@@ -1,0 +1,37 @@
+---
+import { sections, site } from '../data/site';
+import { filters } from '../data/projects';
+import type { ConsoleData } from '../scripts/lib/commands';
+
+const data: ConsoleData = {
+  name: site.name,
+  email: site.email,
+  resumes: site.resumes.map(({ label, href }) => ({ label, href })),
+  blog: '/blog',
+  links: { github: site.links.github, linkedin: site.links.linkedin },
+  sections: sections.map(({ id, label, href }) => ({ id, label, href })),
+  filters: filters.map((f) => f.id),
+};
+---
+
+<div class="con" id="console" role="dialog" aria-label="Chuken console" hidden data-console={JSON.stringify(data)}>
+  <div class="con-bar">
+    <span>Chuken console</span>
+    <button type="button" id="con-close">
+      Close
+    </button>
+  </div>
+  <div class="con-out" id="con-out" role="log" aria-live="polite"></div>
+  <div class="con-line">
+    <span aria-hidden="true">&gt;</span>
+    <input type="text" id="con-in" aria-label="Console command" autocomplete="off" spellcheck="false" />
+  </div>
+</div>
+
+<script>
+  import { initConsole } from '../scripts/console';
+  import type { ConsoleData } from '../scripts/lib/commands';
+
+  const el = document.getElementById('console');
+  if (el?.dataset.console) initConsole(JSON.parse(el.dataset.console) as ConsoleData);
+</script>

@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+import avatar from '../../assets/me/avatar.webp';
+import { newTab, site } from '../../data/site';
+import { gamesShipped, liveApps } from '../../data/projects';
+import Glyph from '../Glyph.astro';
+
+const stats = [
+  { icon: 'd-pad', value: gamesShipped, label: 'Games shipped', note: 'From game jams to the Play Store' },
+  { icon: 'd-console', value: liveApps, label: 'Live web apps', note: 'For players, guilds, and the gym' },
+];
+---
+
+<div class="hero-bg">
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div>
+      <div class="hero-emblem" aria-hidden="true"></div>
+      <p class="hero-eyebrow">Gameplay and full-stack engineer</p>
+      <h1 id="hero-title">I build games and web apps.</h1>
+      <p class="lede">
+        Right now I'm making <a href="/breakdowns/runefall">Runefall</a>, a classless arena-and-dungeon RPG, on my own. I
+        also run <a href="/breakdowns/wow-companion">Guild Golem</a>, a guild management site for World of Warcraft:
+        Forever, along with a League and Dota drafting tool and a training log I use every day. Before that, I built the
+        React component library that 100+ engineers at HCL BigFix shipped with.
+      </p>
+    </div>
+    <aside class="sheet frame orn" aria-label="Profile">
+      <div class="char">
+        <div class="portrait">
+          <Image src={avatar} alt="" width={116} height={116} loading="eager" />
+        </div>
+        <div>
+          <div class="pname">{site.name}</div>
+          <div class="pguild">&lt;{site.studio}&gt;</div>
+          <div class="ptitle">Engineer, designer, producer. {site.location}.</div>
+        </div>
+      </div>
+      <ul class="stat-tiles" aria-label="At a glance">
+        {stats.map((s) => (
+          <li class="stat-tile">
+            <span class="stat-icon">
+              <Glyph id={s.icon} />
+            </span>
+            <span class="stat-text">
+              <span class="stat-value">{s.value}</span>
+              <span class="stat-label">{s.label}</span>
+              <span class="stat-note">{s.note}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+      <p class="open-roles">
+        <span class="now-dot" aria-hidden="true"></span>
+        Open to gameplay, game design, and software engineering roles
+      </p>
+      <div class="actions sheet-actions">
+        {site.resumes.map((r, i) => (
+          <a class:list={['btn', { primary: i === 0 }]} href={r.href} {...newTab(r.href)}>
+            {r.label}
+          </a>
+        ))}
+        <a class="btn" href="#contact">
+          Contact me
+        </a>
+      </div>
+    </aside>
+  </section>
+</div>

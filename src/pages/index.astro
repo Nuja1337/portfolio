@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+import Board from '../components/home/Board.astro';
+import Career from '../components/home/Career.astro';
+import Contact from '../components/home/Contact.astro';
+import Featured from '../components/home/Featured.astro';
+import Hero from '../components/home/Hero.astro';
+import Loadout from '../components/home/Loadout.astro';
+import OffTheClock from '../components/home/OffTheClock.astro';
+---
+
+<BaseLayout home skipTo="#featured">
+  <main id="top">
+    <Hero />
+    <div class="wrap">
+      <Featured />
+      <Career />
+      <Board />
+      <Loadout />
+      <OffTheClock />
+      <Contact />
+      <Footer />
+    </div>
+    <div class="finale" aria-hidden="true"></div>
+  </main>
+</BaseLayout>

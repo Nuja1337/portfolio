@@ -1,0 +1,92 @@
+/* ================= LIGHT: documents on a table at night ================= */
+[data-skin="light"] body::after{content:""; position:fixed; inset:0; z-index:5; pointer-events:none; background:radial-gradient(ellipse at 50% 40%, transparent 50%, rgba(0,0,0,.62) 100%)}
+[data-skin="light"] .orn::before{display:none}
+[data-skin="light"] .doc-wrap{filter:drop-shadow(0 14px 22px rgba(0,0,0,.7))}
+[data-skin="light"] .torn{clip-path:var(--torn); border:0 !important; border-radius:0 !important; box-shadow:none !important}
+[data-skin="light"] .torn::after{display:none}
+[data-skin="light"] .card, [data-skin="light"] .sub, [data-skin="light"] .loadout, [data-skin="light"] .track-box, [data-skin="light"] .hero-card, [data-skin="light"] .ledger{
+  background:radial-gradient(circle at 18% 22%, rgba(70,40,15,.16), transparent 38%), radial-gradient(circle at 84% 76%, rgba(70,40,15,.14), transparent 34%), radial-gradient(circle at 100% 100%, rgba(25,15,8,.55), transparent 22%), linear-gradient(180deg,var(--doc),var(--doc-2));
+  color:var(--doc-ink); border-color:#4A3A2A; border-radius:2px; box-shadow:inset 0 0 0 1px rgba(255,255,255,.22), inset 0 0 70px rgba(60,35,15,.22), 0 10px 26px rgba(0,0,0,.6)}
+[data-skin="light"] .card::before{content:""; position:absolute; inset:0; pointer-events:none; background:var(--noise); opacity:.06}
+[data-skin="light"] .card:hover{transform:translateY(-3px) rotate(-.3deg); box-shadow:inset 0 0 0 1px rgba(255,255,255,.22), 0 16px 30px rgba(0,0,0,.7)}
+[data-skin="light"] .card[data-q]{border-top:1px solid #4A3A2A}
+[data-skin="light"] .card h3, [data-skin="light"] .sub h3, [data-skin="light"] .sub h4, [data-skin="light"] .loadout h3, [data-skin="light"] .job h3, [data-skin="light"] .ach-card h3, [data-skin="light"] .contact-line, [data-skin="light"] .h4, [data-skin="light"] .track-top h3{color:var(--doc-ink)}
+[data-skin="light"] .card[data-q="legend"] h3{color:var(--rubric)}
+[data-skin="light"] .card[data-q="rare"] h3{color:var(--doc-ink-3)}
+[data-skin="light"] .card p, [data-skin="light"] .sub p, [data-skin="light"] .loadout li, [data-skin="light"] .job li, [data-skin="light"] .prose, [data-skin="light"] .spec td, [data-skin="light"] .ach-card p{color:var(--doc-ink)}
+[data-skin="light"] .card .role, [data-skin="light"] .job .org, [data-skin="light"] .fig figcaption, [data-skin="light"] .track-top .of, [data-skin="light"] .unlocked, [data-skin="light"] .card-foot, [data-skin="light"] .links .k, [data-skin="light"] .job .when{color:var(--doc-ink-2)}
+[data-skin="light"] .card-head{background:rgba(0,0,0,.06); border-bottom:1px solid var(--doc-rule); color:var(--doc-ink-3)}
+[data-skin="light"] .ref, [data-skin="light"] .sub .ref{color:var(--doc-ink-3)}
+[data-skin="light"] .state{color:var(--doc-ink-2)}
+[data-skin="light"] .s-live{color:var(--rubric)}
+[data-skin="light"] .tag{background:transparent; border:1px solid #6B5A44; color:var(--doc-ink-2); border-radius:0}
+[data-skin="light"] .card-foot a, [data-skin="light"] .links a, [data-skin="light"] .spec a, [data-skin="light"] .hc-body a{color:var(--doc-link)}
+[data-skin="light"] .contact-line a{color:var(--rubric)}
+[data-skin="light"] .shot{border-bottom:1px solid var(--doc-rule); background:#2A2118}
+[data-skin="light"] .shot img{filter:sepia(.55) saturate(.7) contrast(1.05) brightness(.92); transition:filter .35s ease, transform .45s ease}
+[data-skin="light"] .card:hover .shot img{filter:none}
+[data-skin="light"] .spec th{color:var(--rubric)}
+[data-skin="light"] .spec th, [data-skin="light"] .spec td, [data-skin="light"] .job, [data-skin="light"] .loadout h3, [data-skin="light"] .fig figcaption{border-color:var(--doc-rule)}
+[data-skin="light"] .fig{border:1px solid #4A3A2A; border-radius:0}
+[data-skin="light"] .prose p:first-of-type::first-letter, [data-skin="light"] .hero .lede::first-letter{font-family:var(--display); font-weight:500; font-size:3.6em; float:left; line-height:.78; padding:.08em .1em 0 0; color:var(--rubric)}
+[data-skin="light"] .hero h1::first-letter{color:var(--rubric)}
+[data-skin="light"] .hc-head{background:rgba(0,0,0,.05); border-bottom:1px solid var(--doc-rule); color:var(--doc-ink-3); border-radius:0; padding-top:26px; background:var(--tracery) top center/auto 16px repeat-x, rgba(0,0,0,.05)}
+[data-skin="light"] .hc-head .kind{color:var(--rubric)}
+[data-skin="light"] .hero-card{border-top:0}
+[data-skin="light"] .sub{background:rgba(0,0,0,.05); border:1px solid var(--doc-rule); border-radius:0; box-shadow:none}
+[data-skin="light"] .btn{background:linear-gradient(#2B2520,#141110); border-color:#5A4A38; color:var(--gold-hi); border-radius:0}
+[data-skin="light"] .btn.primary{background:linear-gradient(#3A3835,#0E0D0C); color:#F7F5EF; border-color:#000000; text-shadow:none}
+[data-skin="light"] .btn.small{background:transparent; color:var(--doc-ink); border-color:#6B5A44}
+[data-skin="light"] .track-box{border:1px solid #4A3A2A}
+[data-skin="light"] .track li{color:var(--doc-ink-3)}
+[data-skin="light"] .track li::before{background:repeating-linear-gradient(90deg,#6B5A44 0 8px, transparent 8px 14px); height:2px; top:10px}
+[data-skin="light"] .track li.done::before{background:var(--doc-ink)}
+[data-skin="light"] .track li::after{border-radius:2px; background:var(--doc-2); border-color:#6B5A44; width:12px; height:12px; margin-left:-6px; top:4px}
+[data-skin="light"] .track li.done{color:var(--doc-ink)}
+[data-skin="light"] .track li.done::after{background:var(--doc-ink); border-color:var(--doc-ink)}
+[data-skin="light"] .track li.now{color:var(--rubric)}
+[data-skin="light"] .track li.now::before{background:linear-gradient(90deg,var(--doc-ink) 50%, transparent 50%), repeating-linear-gradient(90deg,#6B5A44 0 8px, transparent 8px 14px)}
+[data-skin="light"] .track li.now::after{border-radius:50%; background:radial-gradient(circle at 35% 35%,#3A3835,#0E0D0C 70%); border-color:#000000; box-shadow:0 2px 4px rgba(0,0,0,.4)}
+[data-skin="light"] .deck-head{position:relative; border-bottom:1px solid var(--line-strong); padding-bottom:22px}
+[data-skin="light"] .deck-head::after{content:""; position:absolute; left:50%; bottom:-11px; width:72px; height:22px; margin-left:-36px; background:var(--bg) var(--fleuron) center/contain no-repeat}
+[data-skin="light"] .sec + .sec{border-top:0}
+[data-skin="light"] .deck-spine{background:linear-gradient(90deg,#141312,#0E0D0C 60%,#141312); border-color:#5A4A38; box-shadow:0 0 0 1px #000, 4px 4px 0 -1px #0F0D0B, 5px 5px 0 -1px #5A4A38}
+[data-skin="light"] .deck-spine::before{background:var(--gold-hi)}
+[data-skin="light"] .deck-spine svg{color:var(--gold-hi)}
+[data-skin="light"] .count{color:var(--gold-hi); border-color:#5A4A38}
+[data-skin="light"] .filters{background:#17130F; border-color:#4A3A2A; border-radius:0}
+[data-skin="light"] .fbtn{border-radius:0}
+[data-skin="light"] .fbtn[aria-pressed="true"]{border-color:var(--rubric); background:rgba(20,19,18,.1)}
+[data-skin="light"] .ledger{padding:6px 22px; border:1px solid #4A3A2A}
+[data-skin="light"] .job:last-child{border-bottom:0}
+[data-skin="light"] .job:first-child{border-top:0}
+[data-skin="light"] .job .when{color:var(--rubric)}
+[data-skin="light"] .ach-icon{clip-path:none; border-radius:50%; background:radial-gradient(circle at 35% 35%,#3A3835,#0E0D0C 70%); color:#F7F5EF; box-shadow:0 2px 5px rgba(0,0,0,.45); transform:rotate(-8deg)}
+[data-skin="light"] .char{border:1px solid #4A3A2A; border-radius:0}
+[data-skin="light"] .portrait{border-color:var(--gold-hi); box-shadow:0 0 0 2px #000, 0 0 0 3px #5A4A38; background:#1A1410}
+[data-skin="light"] .pguild{color:var(--gold-hi)}
+[data-skin="light"] .nav{border-bottom:2px solid #3A2F25}
+[data-skin="light"] .brand{font-size:1.5rem; font-weight:500}
+[data-skin="light"] .brand .guild{color:var(--gold-hi)}
+[data-skin="light"] .skin{border-radius:0} [data-skin="light"] .skin button[aria-pressed="true"]{background:var(--rubric); color:#F7F5EF}
+[data-skin="light"] .actionbar{border-radius:0; border-color:#5A4A38}
+[data-skin="light"] .slot{border-radius:0; border-color:#5A4A38}
+[data-skin="light"] .slot kbd{color:var(--gold-hi)}
+[data-skin="light"] .slot::before{background:conic-gradient(rgba(110,20,20,.78) var(--cd), transparent 0)}
+[data-skin="light"] .slot::after{border-radius:0; border-color:#5A4A38}
+[data-skin="light"] .hero-bg{border-bottom:2px solid #3A2F25}
+[data-skin="light"] .con{border-top-color:var(--rubric)}
+[data-skin="light"] .empty{border-radius:0}
+[data-skin="light"] .brand svg{--mark-face:var(--surface); --mark-ink:var(--text)}
+
+
+[data-skin="light"] .ach-photo{border-color:var(--doc-rule); border-radius:0}
+/* The raid record stays in ink, like the action bar, so the Warcraft Logs colors read as they do on the site. */
+[data-skin="light"] .ach-stats div{--text-2:#BDB9B1; --text-3:#98948C; background:#0E0D0C; border-color:#0E0D0C; border-radius:0}
+[data-skin="light"] .ach-stats .v{color:var(--parse, #A9C98C)}
+[data-skin="light"] .now-date{color:var(--doc-ink-2)}
+[data-skin="light"] .now-card{border-left:3px solid var(--rubric)}
+[data-skin="light"] .now-head h3{color:var(--doc-ink)}
+[data-skin="light"] .now-dot{background:var(--rubric); box-shadow:0 0 0 3px rgba(20,19,18,.1)}
+[data-skin="light"] .now-list dt{color:var(--rubric)}
+[data-skin="light"] .now-list dd{color:var(--doc-ink)}

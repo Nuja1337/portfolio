@@ -1,0 +1,44 @@
+---
+/** Section header: the deck spine, a title (optionally different per skin), a count, and a meta line. */
+import Glyph from './Glyph.astro';
+import SkinText from './SkinText.astro';
+
+interface Props {
+  icon: string;
+  title: string;
+  grimTitle?: string;
+  note?: string;
+  count?: string;
+  countId?: string;
+  headingId?: string;
+}
+const { icon, title, grimTitle, note, count, countId, headingId } = Astro.props;
+---
+
+<div class="deck-head">
+  <div class="deck-title">
+    <div class="deck-spine">
+      <Glyph id={icon} />
+    </div>
+    <div>
+      <h2 id={headingId}>
+        {grimTitle ? <SkinText h={title} g={grimTitle} /> : title}
+        {note && (
+          <>
+            {' '}
+            <span class="wt">({note})</span>
+          </>
+        )}
+        {count && (
+          <span class="count" id={countId}>
+            {count}
+          </span>
+        )}
+      </h2>
+      <div class="deck-meta">
+        <slot />
+      </div>
+    </div>
+  </div>
+  <slot name="aside" />
+</div>

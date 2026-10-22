@@ -1,0 +1,11 @@
+---
+/** Text that changes with the mode: the heroic copy in dark mode, the grimdark copy in light mode. */
+interface Props {
+  h: string;
+  g: string;
+}
+const { h, g } = Astro.props;
+---
+
+<span class="sk-h">{h}</span>
+<span class="sk-g">{g}</span>

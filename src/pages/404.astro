@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout title={`Lost in the fog | ${site.name}`} description="This page doesn't exist.">
+  <main id="main" class="wrap lost">
+    <div>
+      <h1>You wandered into the fog.</h1>
+      <p>There's nothing here. The page never existed, or it's hidden from your team.</p>
+      <a class="btn primary" href="/">
+        Back to the arena
+      </a>
+    </div>
+  </main>
+</BaseLayout>

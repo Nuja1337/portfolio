@@ -1,0 +1,36 @@
+/* Light treatment for the additions */
+[data-skin="light"] .group-head{border-bottom:1px solid var(--line-strong)}
+[data-skin="light"] .group-head h3{color:var(--gold-hi)}
+[data-skin="light"] .soon{background:var(--rubric); color:#F7F5EF; border-radius:0}
+[data-skin="light"] .codex h3, [data-skin="light"] .post-item h3{color:var(--doc-ink)}
+[data-skin="light"] .codex p, [data-skin="light"] .codex li, [data-skin="light"] .post-item p{color:var(--doc-ink)}
+[data-skin="light"] .post-meta{color:var(--doc-ink-2)}
+[data-skin="light"] .page .post-meta{color:var(--text-3)}
+[data-skin="light"] .banner{border-color:var(--rubric); background:rgba(20,19,18,.06); border-radius:0}
+[data-skin="light"] .banner svg, [data-skin="light"] .banner b{color:#141312}
+[data-skin="light"] .draft-tag{color:var(--rubric); border-color:var(--rubric); border-radius:0}
+[data-skin="light"] .post-body h2{color:var(--gold-hi); font-weight:500}
+[data-skin="light"] .post-body blockquote{border-left-color:var(--rubric)}
+[data-skin="light"] .wt{color:var(--text-3)}
+/* The figure keeps its dark plate in light, so its caption needs light ink. */
+[data-skin="light"] .fig figcaption{color:var(--text-2)}
+
+/* Light hero: a sumi-e wash on rice paper, so the hero text turns to ink. */
+[data-skin="light"] .hero-bg{background:#ECE4D1 var(--art-ink) center top/cover no-repeat; border-bottom:2px solid #3A2F25}
+[data-skin="light"] .hero-bg::before{display:none}
+[data-skin="light"] .hero-emblem::before{background-image:var(--art-enso); width:220px; height:220px; margin:-104px 0 0 -110px}
+[data-skin="light"] .hero h1{color:#1B1712; text-shadow:none}
+[data-skin="light"] .hero .lede{color:#3A3026; text-shadow:none}
+[data-skin="light"] .hero .btn:not(.primary){background:rgba(236,228,209,.55); color:#1B1712; border-color:#3A2F25; box-shadow:none}
+[data-skin="light"] .hero .btn:not(.primary):hover{background:#1B1712; color:#ECE4D1}
+[data-skin="light"] .char{background:rgba(236,228,209,.6); border-color:#3A2F25}
+[data-skin="light"] .pname{color:#1B1712}
+[data-skin="light"] .pguild{color:var(--rubric)}
+[data-skin="light"] .ptitle{color:#5A4A3A}
+[data-skin="light"] .portrait{border-color:#1B1712; box-shadow:0 0 0 2px #ECE4D1, 0 0 0 3px #3A2F25}
+[data-skin="light"] .cat-nav a{border-radius:0; background:#17130F; border-color:#5A4A38}
+[data-skin="light"] .cat-head svg, [data-skin="light"] .teaser-cats svg{color:var(--rubric)}
+[data-skin="light"] .teaser-cats b{color:var(--doc-ink)}
+[data-skin="light"] .cat .empty{border-radius:0}
+[data-skin="light"] .contact-head{border-color:var(--doc-rule); background:rgba(0,0,0,.05)}
+[data-skin="light"] .links li{background:rgba(0,0,0,.05); border-color:var(--doc-rule); border-radius:0}

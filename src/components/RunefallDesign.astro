@@ -1,0 +1,85 @@
+---
+/**
+ * Everything about Runefall the game, shown on its breakdown ahead of the engineering story: the overview, the roadmap,
+ * the design at a glance, the sealed Rune Forge, and the core tenets. The Rune Forge stays sealed.
+ */
+import { closedMilestones, milestones, spec, tenets } from '../data/runefall';
+import { mailto } from '../data/site';
+import Glyph from './Glyph.astro';
+
+const current = milestones.find((m) => m.status === 'now');
+---
+
+<section class="bd-design" aria-labelledby="overview">
+  <h2 id="overview">Overview</h2>
+  <div class="prose">
+    <p>
+      Runefall is a session-based competitive RPG for PC. Players queue from a lobby into instanced PvP arenas and a
+      cooperative five-player dungeon. There is no open world, questing, gear treadmill or lockout, so every mode is
+      open every time. The target feel is WoW arena intensity with Battlerite's readability and pace, played
+      top-down with click-to-move.
+    </p>
+    <p>
+      There are no classes. A player's whole combat identity is a kit of ten abilities they build themselves, plus one
+      resource, one armor, and one weapon. The pitch is &quot;build your class&quot;, and your opponents only learn your kit by
+      surviving it.
+    </p>
+    <p>
+      I do all of it as an indie developer: the design, the roadmap, the code, and the scope calls that keep a
+      one-person studio on track toward a playable beta.
+    </p>
+  </div>
+
+  <h2 id="roadmap">Roadmap</h2>
+  <div class="track-box frame orn">
+    <div class="track-top">
+      <h3>Milestones</h3>
+      <span class="of">
+        {closedMilestones} of {milestones.length} closed, and {current?.name.toLowerCase()} is in progress.
+      </span>
+    </div>
+    <ol class="track" tabindex="0" aria-label="Milestones">
+      {milestones.map((m) => (
+        <li class={m.status === 'todo' ? undefined : m.status} aria-current={m.status === 'now' ? 'step' : undefined}>
+          {m.name}
+        </li>
+      ))}
+    </ol>
+  </div>
+
+  <h2 id="at-a-glance">The game at a glance</h2>
+  <table class="spec" aria-label="Runefall at a glance">
+    <tbody>
+      {spec.map((row) => (
+        <tr>
+          <th scope="row">{row.label}</th>
+          <td>{row.text}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  <div class="forge-line" id="forge">
+    <span class="lockmark">
+      <Glyph id="i-lock" />
+    </span>
+    <p>
+      <strong>The Rune Forge</strong> is the center of Runefall. Instead of picking a class, you build your own
+      abilities. It stays sealed while it's being forged. <span class="soon">Coming soon</span>
+    </p>
+    <a class="btn small" href={mailto('Rune Forge early look')}>
+      Ask for an early look
+    </a>
+  </div>
+
+  <h2 id="core-tenets">Core tenets</h2>
+  <div class="subcards">
+    {tenets.map((n) => (
+      <div class="sub">
+        <span class="ref">{n.ref}</span>
+        <h3>{n.title}</h3>
+        <p>{n.text}</p>
+      </div>
+    ))}
+  </div>
+</section>

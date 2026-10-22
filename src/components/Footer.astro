@@ -1,0 +1,22 @@
+---
+import { site } from '../data/site';
+
+/** The build date: every deploy is a fresh build, so this is when the site last changed. */
+const built = new Date();
+const updated = built.toLocaleDateString('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: 'America/Los_Angeles',
+});
+const isoDate = built.toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' });
+---
+
+<footer class="site-foot">
+  <span>
+    {site.name}, {site.location}
+  </span>
+  <span>
+    Last updated <time datetime={isoDate}>{updated}</time>
+  </span>
+</footer>

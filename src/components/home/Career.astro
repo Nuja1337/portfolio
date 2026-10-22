@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import { jobs } from '../../data/career';
+import { newTab, site } from '../../data/site';
+import DeckHead from '../DeckHead.astro';
+
+const published = new Set(
+  (await getCollection('breakdowns', ({ data }) => import.meta.env.DEV || !data.draft)).map((b) => b.id),
+);
+---
+
+<section class="sec" id="experience" style="--deck:var(--q-epic)" aria-labelledby="experience-title">
+  <DeckHead icon="d-badge" title="Experience" headingId="experience-title">
+    Résumés (PDF):{' '}
+    {site.resumes.map((r, i) => (
+      <>
+        {i > 0 && ' · '}
+        <a href={r.href} {...newTab(r.href)}>
+          {r.label.replace(' résumé', '')}
+        </a>
+      </>
+    ))}
+  </DeckHead>
+  <div class="ledger">
+    {jobs.map((job) => (
+      <div class="job">
+        <div class="when">
+          {job.ref} · {job.when}
+        </div>
+        <div>
+          <h3>{job.title}</h3>
+          <div class="org">{job.org}</div>
+          {job.points && (
+            <ul>
+              {job.points.map((point) => (
+                <li>{point}</li>
+              ))}
+            </ul>
+          )}
+          {job.breakdown && published.has(job.breakdown) && (
+            <a class="job-link" href={`/breakdowns/${job.breakdown}`}>
+              Read the breakdown
+            </a>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

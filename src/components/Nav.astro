@@ -1,0 +1,38 @@
+---
+import { sections, site } from '../data/site';
+import SkinToggle from './SkinToggle.astro';
+
+interface Props {
+  /** On the home page links are in-page anchors; elsewhere they point back home. */
+  home: boolean;
+}
+const { home } = Astro.props;
+const href = (id: string) => (home ? `#${id}` : `/#${id}`);
+---
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href={home ? '#top' : '/'}>
+      <svg aria-hidden="true">
+        <use href="#g-mark"></use>
+      </svg>
+      {site.name} <span class="guild">&lt;{site.studio}&gt;</span>
+    </a>
+    <div class="nav-right">
+      <nav class="nav-links" aria-label="Sections">
+        {sections
+          .filter((s) => s.nav)
+          .map((s) =>
+            s.href ? (
+              <a href={s.href} aria-current={Astro.url.pathname.startsWith(s.href) ? 'page' : undefined}>
+                {s.label}
+              </a>
+            ) : (
+              <a href={href(s.id)}>{s.label}</a>
+            ),
+          )}
+      </nav>
+      <SkinToggle />
+    </div>
+  </div>
+</header>

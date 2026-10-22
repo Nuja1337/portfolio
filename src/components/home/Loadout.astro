@@ -1,0 +1,22 @@
+---
+import { loadout } from '../../data/loadout';
+import DeckHead from '../DeckHead.astro';
+---
+
+<section class="sec" id="skills" style="--deck:var(--q-rare)" aria-labelledby="skills-title">
+  <DeckHead icon="d-wrench" title="Skills" headingId="skills-title">
+    Design, engineering, and production on one desk
+  </DeckHead>
+  <div class="cols">
+    {loadout.map((col) => (
+      <div class="loadout" style={`--deck:var(--q-${col.quality})`}>
+        <h3>{col.title}</h3>
+        <ul>
+          {col.items.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>

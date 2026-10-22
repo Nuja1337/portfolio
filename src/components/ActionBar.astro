@@ -1,0 +1,41 @@
+---
+import { sections } from '../data/site';
+import Glyph from './Glyph.astro';
+
+interface Props {
+  home: boolean;
+}
+const { home } = Astro.props;
+---
+
+<nav class="actionbar" aria-label="Sections">
+  <button
+    class="slot"
+    type="button"
+    data-console-open
+    data-label="Console"
+    aria-label="Console"
+    aria-controls="console"
+    aria-expanded="false"
+  >
+    <Glyph id="d-console" />
+    <kbd>~</kbd>
+  </button>
+  {sections.map((s, i) => (
+    <a
+      class="slot"
+      href={s.href ?? (home ? `#${s.id}` : `/#${s.id}`)}
+      data-key={String(i + 1)}
+      data-label={s.label}
+      aria-label={s.label}
+    >
+      <Glyph id={s.icon} />
+      <kbd>{i + 1}</kbd>
+    </a>
+  ))}
+</nav>
+
+<script>
+  import { initActionBar } from '../scripts/actionbar';
+  initActionBar();
+</script>

@@ -1,0 +1,45 @@
+---
+import { newTab, site } from '../../data/site';
+
+/** One cell per way to reach me, most direct first; the résumés share a cell so the grid stays full. */
+const links = [
+  { k: 'Email', items: [{ label: site.email, href: `mailto:${site.email}` }] },
+  { k: 'LinkedIn', items: [{ label: 'linkedin.com/in/alexander-shaham', href: site.links.linkedin }] },
+  {
+    k: 'Résumés (PDF)',
+    items: site.resumes.map((r) => ({ label: r.label.replace(' résumé', ''), href: r.href })),
+  },
+  { k: 'GitHub', items: [{ label: 'github.com/Nuja1337', href: site.links.github }] },
+  { k: 'LeetCode', items: [{ label: 'leetcode.com/ajshaham1337', href: site.links.leetcode }] },
+  { k: 'Discord', items: [{ label: 'Message me', href: site.links.discord }] },
+];
+---
+
+<section class="sec" id="contact" style="--deck:var(--accent)" aria-labelledby="contact-title">
+  <div class="doc-wrap">
+    <article class="card contact-card frame orn torn">
+      <header class="contact-head">
+        <h2 class="contact-line" id="contact-title">
+          If you're hiring for gameplay, game design or software engineering, I'd like to hear from you.
+        </h2>
+      </header>
+      <ul class="links">
+        {links.map((l) => (
+          <li>
+            <span class="k">{l.k}</span>
+            <span>
+              {l.items.map((item, i) => (
+                <>
+                  {i > 0 && ' · '}
+                  <a href={item.href} {...newTab(item.href)}>
+                    {item.label}
+                  </a>
+                </>
+              ))}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </article>
+  </div>
+</section>

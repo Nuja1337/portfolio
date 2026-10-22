@@ -1,0 +1,82 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+import Glyph from '../../components/Glyph.astro';
+import { categories } from '../../data/blog';
+import { site } from '../../data/site';
+
+const posts = (await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const sectioned = categories.map((c) => ({ ...c, posts: posts.filter((p) => p.data.category === c.id) }));
+const fmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+---
+
+<BaseLayout
+  title={`Blog | ${site.name}`}
+  description="Game development, design, and engineering from Alexander Shaham: Runefall devlogs, theorycrafting, opinions, and stories. Under construction."
+>
+  <main id="main" class="wrap page">
+    <header class="page-head">
+      <div class="crumb">
+        <a href="/">Home</a> / Blog
+      </div>
+      <h1>Blog</h1>
+      <p>
+        Anything game development, design, or engineering: devlogs from Runefall, theorycrafting, the tech behind my web
+        apps, opinions, and stories from a life spent competing.
+      </p>
+    </header>
+
+    <div class="banner" role="status">
+      <Glyph id="d-wrench" />
+      <span>
+        <b>Under construction.</b> You're early. The blog is open, but the first entries are still being written. The{' '}
+        <a href="/rss.xml" target="_blank" rel="noopener">
+          RSS feed
+        </a>{' '}
+        already works, so subscribe and you'll catch the first one.
+      </span>
+    </div>
+
+    <nav class="cat-nav" aria-label="Blog sections">
+      {sectioned.map((c) => (
+        <a href={`#${c.id}`}>
+          {c.title} <span class="n">{c.posts.length}</span>
+        </a>
+      ))}
+    </nav>
+
+    {sectioned.map((c) => (
+      <section class="cat" id={c.id} aria-labelledby={`${c.id}-title`}>
+        <div class="cat-head">
+          <Glyph id={c.icon} />
+          <div>
+            <h2 id={`${c.id}-title`}>{c.title}</h2>
+            <p>{c.blurb}</p>
+          </div>
+        </div>
+        {c.posts.length ? (
+          <ul class="post-list">
+            {c.posts.map((post) => (
+              <li class="post-item card">
+                <a href={`/blog/${post.id}`}>
+                  <div class="post-meta">
+                    <time datetime={post.data.pubDate.toISOString()}>{fmt.format(post.data.pubDate)}</time>
+                    {post.data.draft && <span class="draft-tag">draft</span>}
+                  </div>
+                  <h3>{post.data.title}</h3>
+                  <p>{post.data.description}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="empty">Nothing here yet.</p>
+        )}
+      </section>
+    ))}
+    <Footer />
+  </main>
+</BaseLayout>

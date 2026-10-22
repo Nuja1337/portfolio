@@ -1,0 +1,70 @@
+/* ---------- Career ---------- */
+.job{display:grid; grid-template-columns:186px minmax(0,1fr); gap:22px; padding:20px 0; border-top:1px solid var(--line)}
+.job:last-child{border-bottom:1px solid var(--line)}
+.job .when{font-family:var(--mono); font-size:.82rem; color:var(--text-3); padding-top:4px}
+.job h3{font-size:1.15rem; color:var(--accent)}
+html[data-skin="light"] .job h3{font-size:1.5rem; font-weight:500}
+.job .org{font-family:var(--ui); font-size:1.06rem; color:var(--text-2); margin-top:2px}
+.job ul{margin:9px 0 0; padding-left:18px; font-size:.96rem; max-width:66ch}
+.job li + li{margin-top:5px}
+
+/* ---------- Loadout ---------- */
+.cols{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px}
+.loadout{background:var(--surface); border:1px solid var(--line-strong); border-radius:6px; border-top:3px solid var(--deck,var(--accent)); padding:16px 18px 18px; box-shadow:0 0 0 1px var(--frame-out)}
+.loadout h3{font-size:1.05rem; padding-bottom:9px; border-bottom:1px solid var(--line); color:var(--accent)}
+html[data-skin="light"] .loadout h3{font-size:1.4rem; font-weight:500}
+.loadout ul{list-style:none; margin:11px 0 0; padding:0; font-size:.95rem}
+.loadout li{padding:4px 0}
+
+/* ---------- Achievements ---------- */
+.life-grid{grid-auto-flow:row dense}
+.ach-card{display:flex; flex-direction:column; gap:14px; padding:16px; background:linear-gradient(90deg,var(--surface-2),var(--surface))}
+.grid .card.ach-card{flex-direction:column}
+.ach-main{display:flex; gap:14px; flex:1}
+.ach-main > div{display:flex; flex-direction:column; flex:1}
+.ach-card.span-2{grid-column:span 2}
+.ach-card.span-3{grid-column:1 / -1}
+.ach-card.tall{grid-row:span 2}
+.tall .ach-main{flex:none}
+/* The photo fills whatever the two rows leave over; absolute so its own height never stretches the row. */
+.ach-photo{position:relative; flex:1; min-height:220px; margin:-16px -16px 0; overflow:hidden; border-radius:5px 5px 0 0; border-bottom:1px solid var(--line-strong)}
+.ach-photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 30%}
+.ach-stats{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin:14px 0 0}
+.ach-stats div{display:flex; flex-direction:column; gap:4px; padding:10px 12px; background:var(--bg-deep); border:1px solid var(--line-strong); border-radius:4px}
+.ach-stats dd{margin:0}
+.ach-stats .v{order:-1; font-family:var(--display); font-size:1.7rem; line-height:1; color:var(--parse, var(--q-legend))}
+.ach-stats dt{font-family:var(--ui); font-size:.9rem; line-height:1.25; color:var(--text-2)}
+.ach-stats .note{font-family:var(--ui); font-size:.8rem; line-height:1.3; color:var(--text-3)}
+/* Warcraft Logs parse colors. The class sets --parse; each mode's value color reads it. */
+.wcl-artifact{--parse:#E5CC80} .wcl-astounding{--parse:#E268A8} .wcl-legendary{--parse:#FF8000} .wcl-epic{--parse:#A335EE}
+.wcl-rare{--parse:#0070FF} .wcl-uncommon{--parse:#1EFF00} .wcl-common{--parse:#666666}
+.now-card{grid-column:1 / -1; padding:18px 20px; border-left:3px solid var(--q-green)}
+.now-head{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:6px 16px; margin-bottom:12px}
+.now-head h3{display:flex; align-items:center; gap:10px; color:var(--accent)}
+.now-dot{width:9px; height:9px; border-radius:50%; background:var(--q-green); box-shadow:0 0 0 3px rgba(161,185,150,.18)}
+.now-date{font-family:var(--ui); font-size:.95rem; color:var(--text-3); letter-spacing:.04em}
+.now-list{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px 22px; margin:0}
+.now-list dt{font-family:var(--ui); font-size:.85rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--q-green)}
+.now-list dd{margin:4px 0 0; font-size:.95rem; line-height:1.45}
+.ach-icon{width:48px; height:48px; flex:none; padding:12px; color:var(--accent-ink); background:linear-gradient(#F1EFEA,#8F8D88); clip-path:polygon(50% 0,100% 14%,100% 58%,50% 100%,0 58%,0 14%)}
+html[data-skin="light"] .ach-icon{clip-path:none; border-radius:50%; background:radial-gradient(circle at 35% 35%,#3A3835,#0E0D0C 70%); color:#F7F5EF}
+.ach-card h3{color:var(--accent); margin-bottom:3px}
+.ach-card p{font-size:.94rem}
+.unlocked{font-family:var(--ui); font-size:.9rem; color:var(--text-3); margin-top:auto; padding-top:10px; display:block; letter-spacing:.06em}
+
+/* ---------- Contact ---------- */
+.contact-card{padding:0; overflow:hidden}
+.contact-head{padding:26px 28px 24px; border-bottom:1px solid var(--line-strong); background:linear-gradient(100deg,var(--accent-soft),transparent 75%)}
+.contact-line{font-family:var(--display); font-size:clamp(1.3rem,2.6vw,1.9rem); font-weight:700; line-height:1.2}
+html[data-skin="light"] .contact-line{font-size:clamp(1.8rem,3.4vw,2.6rem); font-weight:500}
+.contact-line a{color:var(--accent); text-decoration:none}
+.contact-line a:hover{text-decoration:underline}
+.links{list-style:none; margin:0; padding:22px 28px 26px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; font-family:var(--ui); font-size:1.06rem}
+.links li{display:flex; flex-direction:column; gap:2px; min-width:0; padding:10px 14px; border:1px solid var(--line); border-radius:4px; background:var(--bg-deep)}
+.links .k{color:var(--text-3); font-size:.86rem; letter-spacing:.1em; text-transform:uppercase}
+.links a{color:var(--text); text-decoration:none}
+.links a:hover{color:var(--accent)}
+
+.site-foot{border-top:1px solid var(--line); margin-top:80px; padding:30px 0 20px; font-family:var(--ui); font-size:1rem; color:var(--text-3); display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px}
+
+
