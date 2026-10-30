@@ -16,6 +16,7 @@ import logsShot from '../assets/board/logs.webp';
 import simsShot from '../assets/board/sims.webp';
 import draftsShot from '../assets/board/drafts.webp';
 import tallyShot from '../assets/board/tally.webp';
+import flickwiseShot from '../assets/board/flickwise.webp';
 import portfolioShot from '../assets/board/portfolio.webp';
 import runefallShot from '../assets/runefall/gameplay.webp';
 import guildGolemShot from '../assets/board/guild-golem.webp';
@@ -124,6 +125,24 @@ export const projects: readonly Project[] = [
       position: 'left top',
     },
     link: { label: 'Open', href: 'https://guildgolem.com' },
+  },
+  {
+    ref: '$aim',
+    title: 'Flickwise',
+    deck: 'web',
+    quality: 'legend',
+    state: { kind: 'live', label: 'Live beta' },
+    role: 'Solo, Oct 2026 to present',
+    summary:
+      'A browser aim trainer that records where and how you miss. You click circles, follow sliders and spin spinners in time with a beat, on maps generated from a seed or in eight training modules that adjust their difficulty after every set. Ratings, trends and insights from your last 30 days of clicks point to a weak spot and a drill for it, and later plays show whether the drill carried over. Everything stays in the browser, with no account.',
+    stack: ['TypeScript', 'React', 'Canvas', 'Web Audio', 'IndexedDB', 'Cloudflare Workers'],
+    tags: ['web', 'tool', 'solo', 'live'],
+    image: {
+      src: flickwiseShot,
+      alt: 'A Flickwise map in play: five numbered targets with approach rings and the path between them, under the score and accuracy',
+      position: 'left center',
+    },
+    link: { label: 'Open', href: 'https://flickwise.ajshaham.workers.dev' },
   },
   {
     ref: '$logs',
