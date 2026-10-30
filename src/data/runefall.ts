@@ -104,7 +104,7 @@ export const tenets: readonly Tenet[] = [
   {
     ref: '$run-03',
     title: 'Readability is a mechanic',
-    text: "In a top-down fight, players can only answer what they can read. Team colors are colorblind-safe, silhouettes come before detail, and every windup is drawn on the floor for its full cast. Bosses speak the same telegraph language as players, so the arena teaches the dungeon.",
+    text: 'In a top-down fight, players can only answer what they can read. Team colors are colorblind-safe, silhouettes come before detail, and every windup is drawn on the floor for its full cast. Bosses speak the same telegraph language as players, so the arena teaches the dungeon.',
   },
   {
     ref: '$run-04',
