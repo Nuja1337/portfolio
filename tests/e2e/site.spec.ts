@@ -60,7 +60,10 @@ test.describe('home', () => {
       expect((await request.get(href)).ok(), href).toBe(true);
     }
     const code = page.locator('#featured a', { hasText: 'Code' });
-    expect(await code.evaluateAll((els) => els.map((e) => e.getAttribute('href')))).toEqual(['https://github.com/Nuja1337/tally', 'https://github.com/Nuja1337/drafts']);
+    expect(await code.evaluateAll((els) => els.map((e) => e.getAttribute('href')))).toEqual([
+      'https://github.com/Nuja1337/tally',
+      'https://github.com/Nuja1337/drafts',
+    ]);
   });
 
   test('scrolls the projects inside their own panel', async ({ page }) => {
