@@ -29,7 +29,6 @@ const contact = [
   { text: "ajshaham@gmail.com", link: "mailto:ajshaham@gmail.com" },
   { text: "portfolio.ajshaham.workers.dev", link: "https://portfolio.ajshaham.workers.dev" },
   { text: "github.com/Nuja1337", link: "https://github.com/Nuja1337" },
-  { text: "linkedin.com/in/alexander-shaham", link: "https://www.linkedin.com/in/alexander-shaham/" },
 ];
 
 const runefall =
