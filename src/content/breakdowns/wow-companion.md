@@ -21,32 +21,37 @@ Discord.
 
 ## For officers
 
-- **Calendar:** raid nights in month, week, day, and list views, each in the viewer's own time zone. Sign-up templates
+- **Calendar:** raid nights in month, week, day, and list views, each in the viewer's own time zone, plus nights of no
+  raid for world events, meetings, and dungeon runs. Sign-up templates
   set role targets, class limits, a lock time, and a bench, and optional nights earn extra credit. Absences and a
   standing weekly availability sit beside it.
 - **Raid planner:** place the roster by drag and drop or fill from sign-ups, watch buff coverage update live, then sim
   the raid or send everyone their group by DM. Splits run one raid two to four times in a lockout, each player on a
   different character each run, with officers' pins standing and loot funneled across the runs.
 - **Roster and attendance:** every character in one sortable table with ranks, filters, and role counts. Attendance
-  comes from sign-ups, proven by the guild's own logs, and exports as CSV.
+  counts the raids each person was assigned to and how each went, with the guild's logs as proof where a night has
+  them, and exports as CSV.
 - **Loot:** one system per guild, a loot council, EPGP, or DKP with decay and take-backs, plus priorities from each
-  raid's loot list, imports from RCLootCouncil and Gargul, a ledger of how each item went, and a guild bank with
-  minimums and members' requests.
-- **Running the guild:** ranks with officer permissions granted one by one, strats with who sees what, recruiting
-  listings and applications, an audit log, a bell for what needs attention, and a preview of the guild as a lower rank
-  sees it.
+  raid's loot list, imports from RCLootCouncil and Gargul, a ledger of how each item went, soft reserves, and a guild
+  bank with minimums and members' requests.
+- **Running the guild:** teams with their own rosters and nights, ranks with officer permissions granted one by one,
+  recruiting listings and applications, an audit log, a bell for what needs attention, and a preview of the guild as a
+  lower rank sees it. Strats are drawn over the game's own picture of each boss's room, and officers choose who sees
+  each one. An Insights page covers raiders, raids, and loot.
 
 ## In Discord
 
-The bot lives in the guild's server. Thirteen slash commands cover raids, the roster, reminders, absences, logs,
-recruiting, and lookups for talents, spells, and builds. Sign-up posts update in place, raid nights post themselves,
-and a post follows each raid that's being logged live.
+The bot lives in the guild's server and covers sign-ups and reminders. Everything else is on the site. Five slash
+commands show your next raid nights with buttons to answer, mark you away or leaving early, post a night's sign-up
+message, mention everyone a night is still waiting on, and explain what the bot can do. Sign-up posts update in place,
+raid nights post themselves, and the planner's groups and the officers' alerts post there too. Players without the
+guild's raider or trial role can still answer a night as pugs, and they stay out of attendance and points.
 
 ## For players
 
 - A Today page with the next raid and the two weeks after it, with one-tap answers.
 - Each character's talents, Legacy plan, gear and sim on its own page, with share codes.
-- A sim for 23 specs across nine classes, damage and tanking. It shows a range instead of one number, plus stat weights
+- A sim for 28 specs across nine classes, for damage, tanking, and healing. It shows a range instead of one number, plus stat weights
   and, for tanks, threat.
 - A gear page with a paper doll, totals and caps, and upgrades ranked by the sim's stat weights.
 
@@ -104,7 +109,7 @@ button, or the site.
 ### Heavy work off the main thread, on a budget
 
 The log parser and the sim engine run in Web Workers. A check before every merge and deploy fails if the shell goes
-over 145 KiB gzipped, any page's first load goes over 184 KiB, or a module scan finds the engine or the parser in a
+over 145 KiB gzipped, any page's first load goes over 186 KiB, or a module scan finds the engine or the parser in a
 main-thread chunk. Lab runs
 on a phone over 4G show no layout shift and the largest paint in about a second.
 
@@ -113,7 +118,7 @@ on a phone over 4G show no layout shift and the largest paint in about a second.
 The database sits in the west, and a read from the east costs about 85 ms, so guild pages that read six to ten things
 one after another waited 0.5 to 0.9 seconds before they could draw. Now each page opens with one round trip that finds
 the guild, the viewer's rank, and what the page needs first, then reads the rest together. Most pages went to two round
-trips, the overview from nine to three, and a test fails if any page's chain grows.
+trips and a few to one, and a test fails if any page's chain grows.
 
 ### Locked down by default
 
@@ -123,13 +128,13 @@ A nonce-based Content Security Policy and Trusted Types with no third-party orig
 ## By the numbers
 
 - Live a day after the first commit.
-- 1,000+ automated tests across 200+ files, 90+ of them running inside workerd against a migrated D1.
+- 1,700+ automated tests across 300+ files, 140+ of them running inside workerd against a migrated D1.
 - A Playwright smoke test of the built Worker covers about 100 pages, in both themes, signed in and out, and on a phone,
   with zero CSP or Trusted Types violations and no serious axe findings (WCAG 2.2 AA).
 - A 186 MB raid log parsed and opened in 1.8 seconds in Chrome.
-- 19,000+ Forever items in the game data, and 110+ database migrations so far.
+- 19,000+ Forever items in the game data, and 150+ database migrations so far.
 
 ## What's next
 
-- Healer sims, boss and encounter data, and loot-council voting.
+- Loot-council voting.
 - The in-game addon, which is in testing, and the public launch.

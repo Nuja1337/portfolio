@@ -74,7 +74,8 @@ A breakdown explains how a project was built. Add `src/content/breakdowns/<slug>
 project's `breakdown` field in `projects.ts` (or a job's in `career.ts`). Front matter: `title`, `description`,
 `role`, `timeline`, `stack`, `status`, and `draft`. While `draft: true`, the page and every link to it exist only in
 `npm run dev`; delete the line to publish, and the featured card, the Runefall section, or the Experience entry links it.
-Runefall, Guild Golem (`wow-companion`), Drafts, and Tally each have one, and so do the retired Logs and Sims.
+Runefall and Guild Golem (`wow-companion`) each have one, and so do the retired Logs and Sims. Drafts and Tally link
+their public repos instead.
 Runefall's page also shows its spec table and core tenets from `runefall.ts`.
 
 ## Writing a blog post
