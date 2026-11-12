@@ -13,7 +13,7 @@
 [data-skin="light"] .card h3, [data-skin="light"] .sub h3, [data-skin="light"] .sub h4, [data-skin="light"] .loadout h3, [data-skin="light"] .job h3, [data-skin="light"] .ach-card h3, [data-skin="light"] .contact-line, [data-skin="light"] .h4, [data-skin="light"] .track-top h3{color:var(--doc-ink)}
 [data-skin="light"] .card[data-q="legend"] h3{color:var(--rubric)}
 [data-skin="light"] .card[data-q="rare"] h3{color:var(--doc-ink-3)}
-[data-skin="light"] .card p, [data-skin="light"] .sub p, [data-skin="light"] .loadout li, [data-skin="light"] .job li, [data-skin="light"] .prose, [data-skin="light"] .spec td, [data-skin="light"] .ach-card p{color:var(--doc-ink)}
+[data-skin="light"] .card p, [data-skin="light"] .sub p, [data-skin="light"] .loadout li, [data-skin="light"] .job .job-sum, [data-skin="light"] .prose, [data-skin="light"] .spec td, [data-skin="light"] .ach-card p{color:var(--doc-ink)}
 [data-skin="light"] .card .role, [data-skin="light"] .job .org, [data-skin="light"] .fig figcaption, [data-skin="light"] .track-top .of, [data-skin="light"] .unlocked, [data-skin="light"] .card-foot, [data-skin="light"] .links .k, [data-skin="light"] .job .when{color:var(--doc-ink-2)}
 [data-skin="light"] .card-head{background:rgba(0,0,0,.06); border-bottom:1px solid var(--doc-rule); color:var(--doc-ink-3)}
 [data-skin="light"] .ref, [data-skin="light"] .sub .ref{color:var(--doc-ink-3)}

@@ -32,7 +32,7 @@ export interface ConsoleContext {
 export interface ConsoleData {
   name: string;
   email: string;
-  resumes: readonly { label: string; href: string }[];
+  resume: { label: string; href: string };
   blog: string;
   links: { github: string; linkedin: string };
   sections: readonly { id: string; label: string; href?: string }[];
@@ -157,9 +157,9 @@ export function createCommands(data: ConsoleData): Record<string, Command> {
     },
     resume: {
       usage: 'resume',
-      summary: 'download a résumé',
+      summary: 'download my résumé',
       run(ctx) {
-        for (const r of data.resumes) ctx.link(`${r.label} (PDF)`, r.href);
+        ctx.link(`${data.resume.label} (PDF)`, data.resume.href);
       },
     },
     contact: {

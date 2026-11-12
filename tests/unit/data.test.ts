@@ -116,8 +116,9 @@ describe('Runefall', () => {
 });
 
 describe('career and life', () => {
-  it('keeps the freelance work and the QA internship, newest first', () => {
-    expect(jobs.map((j) => j.ref)).toEqual(['$chuken', '$bigfix', '$intern', '$freelance', '$qa', '$ucsc']);
+  it("follows the résumé's order, keeps the QA internship, and stays to one line a role", () => {
+    expect(jobs.map((j) => j.ref)).toEqual(['$chuken', '$bigfix', '$trader', '$freelance', '$qa', '$ucsc']);
+    for (const j of jobs) if (j.summary) expect(j.summary.length, j.ref).toBeLessThanOrEqual(240);
   });
 
   it('fills the three-column grid with no gaps and has unique titles', () => {
@@ -154,8 +155,7 @@ describe('blog sections', () => {
 describe('links', () => {
   it('open other sites and files in a new tab, and keep site navigation in place', async () => {
     const { opensNewTab, site } = await import('../../src/data/site');
-    expect(site.resumes).toHaveLength(2);
-    for (const r of site.resumes) expect(opensNewTab(r.href)).toBe(true);
+    expect(opensNewTab(site.resume.href)).toBe(true);
     expect(opensNewTab('/rss.xml')).toBe(true);
     expect(opensNewTab(site.links.github)).toBe(true);
     expect(opensNewTab('/blog')).toBe(false);

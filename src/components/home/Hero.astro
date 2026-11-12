@@ -7,7 +7,7 @@ import Glyph from '../Glyph.astro';
 
 const stats = [
   { icon: 'd-pad', value: gamesShipped, label: 'Games shipped', note: 'From game jams to the Play Store' },
-  { icon: 'd-console', value: liveApps, label: 'Live web apps', note: 'For players, guilds, and the gym' },
+  { icon: 'd-console', value: liveApps, label: 'Live web apps', note: 'For players, guilds, study, and the gym' },
 ];
 ---
 
@@ -54,11 +54,9 @@ const stats = [
         Open to gameplay, game design, and software engineering roles
       </p>
       <div class="actions sheet-actions">
-        {site.resumes.map((r, i) => (
-          <a class:list={['btn', { primary: i === 0 }]} href={r.href} {...newTab(r.href)}>
-            {r.label}
-          </a>
-        ))}
+        <a class="btn primary" href={site.resume.href} {...newTab(site.resume.href)}>
+          {site.resume.label}
+        </a>
         <a class="btn" href="#contact">
           Contact me
         </a>

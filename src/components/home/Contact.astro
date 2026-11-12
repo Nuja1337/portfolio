@@ -1,14 +1,11 @@
 ---
 import { newTab, site } from '../../data/site';
 
-/** One cell per way to reach me, most direct first; the résumés share a cell so the grid stays full. */
+/** One cell per way to reach me, most direct first. Six cells keep the grid full. */
 const links = [
   { k: 'Email', items: [{ label: site.email, href: `mailto:${site.email}` }] },
   { k: 'LinkedIn', items: [{ label: 'linkedin.com/in/alexander-shaham', href: site.links.linkedin }] },
-  {
-    k: 'Résumés (PDF)',
-    items: site.resumes.map((r) => ({ label: r.label.replace(' résumé', ''), href: r.href })),
-  },
+  { k: site.resume.label, items: [{ label: 'Download the PDF', href: site.resume.href }] },
   { k: 'GitHub', items: [{ label: 'github.com/Nuja1337', href: site.links.github }] },
   { k: 'LeetCode', items: [{ label: 'leetcode.com/ajshaham1337', href: site.links.leetcode }] },
   { k: 'Discord', items: [{ label: 'Message me', href: site.links.discord }] },

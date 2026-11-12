@@ -11,15 +11,11 @@ const published = new Set(
 
 <section class="sec" id="experience" style="--deck:var(--q-epic)" aria-labelledby="experience-title">
   <DeckHead icon="d-badge" title="Experience" headingId="experience-title">
-    Résumés (PDF):{' '}
-    {site.resumes.map((r, i) => (
-      <>
-        {i > 0 && ' · '}
-        <a href={r.href} {...newTab(r.href)}>
-          {r.label.replace(' résumé', '')}
-        </a>
-      </>
-    ))}
+    One line a role here. My{' '}
+    <a href={site.resume.href} {...newTab(site.resume.href)}>
+      résumé (PDF)
+    </a>{' '}
+    has the details.
   </DeckHead>
   <div class="ledger">
     {jobs.map((job) => (
@@ -30,13 +26,7 @@ const published = new Set(
         <div>
           <h3>{job.title}</h3>
           <div class="org">{job.org}</div>
-          {job.points && (
-            <ul>
-              {job.points.map((point) => (
-                <li>{point}</li>
-              ))}
-            </ul>
-          )}
+          {job.summary && <p class="job-sum">{job.summary}</p>}
           {job.breakdown && published.has(job.breakdown) && (
             <a class="job-link" href={`/breakdowns/${job.breakdown}`}>
               Read the breakdown
