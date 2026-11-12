@@ -167,15 +167,18 @@ test.describe('home', () => {
     await expect(page.locator('#blog')).toHaveCount(0);
   });
 
-  test('links both résumé PDFs from the hero', async ({ page, request }) => {
+  test('links the one résumé PDF from the hero, Experience and Contact', async ({ page, request }) => {
     await page.goto('/');
-    for (const name of ['Game dev résumé', 'Software résumé']) {
-      const href = await page.locator('.hero .actions a', { hasText: name }).getAttribute('href');
-      expect(href).toMatch(/^\/AlexanderShahamResume-(GameDev|Software)\.pdf$/);
-      const res = await request.get(href!);
-      expect(res.ok()).toBe(true);
-      expect(res.headers()['content-type']).toContain('pdf');
-    }
+    await expect(page.locator('.hero .actions a', { hasText: 'Résumé' })).toHaveAttribute(
+      'href',
+      '/AlexanderShahamResume.pdf',
+    );
+    for (const section of ['#experience', '#contact'])
+      await expect(page.locator(`${section} a[href="/AlexanderShahamResume.pdf"]`), section).toHaveCount(1);
+    await expect(page.locator('a[href*="AlexanderShahamResume-"]')).toHaveCount(0);
+    const res = await request.get('/AlexanderShahamResume.pdf');
+    expect(res.ok()).toBe(true);
+    expect(res.headers()['content-type']).toContain('pdf');
   });
 
   test('opens files and other sites in a new tab, and keeps site links in place', async ({ page }) => {

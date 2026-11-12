@@ -6,7 +6,7 @@ import type { ConsoleData } from '../scripts/lib/commands';
 const data: ConsoleData = {
   name: site.name,
   email: site.email,
-  resumes: site.resumes.map(({ label, href }) => ({ label, href })),
+  resume: { label: site.resume.label, href: site.resume.href },
   blog: '/blog',
   links: { github: site.links.github, linkedin: site.links.linkedin },
   sections: sections.map(({ id, label, href }) => ({ id, label, href })),

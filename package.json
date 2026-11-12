@@ -17,8 +17,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "verify": "npm run check && npm test && npm run build && npm run test:e2e",
-    "deploy": "npm run build && wrangler deploy",
-    "resume": "node resume/build.cjs"
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
@@ -35,7 +34,6 @@
     "@astrojs/check": "^0.9.10",
     "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "1.56.1",
-    "docx": "^9.7.2",
     "playwright-core": "^1.56.1",
     "prettier": "^3.9.9",
     "prettier-plugin-astro": "^1.1.0",

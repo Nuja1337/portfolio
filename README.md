@@ -4,7 +4,7 @@ Alexander Shaham's portfolio site, with featured projects, Runefall, other proje
 section and a blog. It's live at **https://portfolio.ajshaham.workers.dev**.
 
 Version four rebuilt the single-file v3 as a typed, tested static site. Version five reorganized it for recruiters, with
-plain section titles, four featured projects at the top, and separate game dev and software résumés. Dark and light
+plain section titles, four featured projects at the top, and one résumé. Dark and light
 modes follow the visitor's system setting, with a moon and sun toggle. There's also an action bar with number-key
 shortcuts and a dev console (the action bar's <kbd>~</kbd> slot, or press <kbd>~</kbd>). Each mode has its own copy,
 heroic in dark mode and grimdark in light.
@@ -36,7 +36,6 @@ All the art is drawn in code at build time (`src/scripts/lib/art.ts`, served fro
 | `npm run test:e2e` | End-to-end and accessibility tests against the production build |
 | `npm run verify`   | All of the above, in order                                      |
 | `npm run deploy`   | Build and publish to Cloudflare Workers                         |
-| `npm run resume`   | Regenerate the game dev, software, and grad school résumés      |
 
 ## Deploy
 
@@ -56,7 +55,7 @@ Everything the site says lives in `src/data/`, one file per section:
 | `site.ts`     | Name, links, résumé path, and the section list behind the nav and action bar |
 | `runefall.ts` | Milestone status, the hero card's spec table, and design notes               |
 | `projects.ts` | Every card: the four featured ones, then the Projects board by deck          |
-| `career.ts`   | Experience                                                                   |
+| `career.ts`   | Experience, one line a role (the résumé has the detail)                      |
 | `loadout.ts`  | Skills                                                                       |
 | `life.ts`     | About                                                                        |
 
@@ -64,9 +63,9 @@ Everything the site says lives in `src/data/`, one file per section:
   track and the stat line follow.
 - **A new project:** add an entry to `projects.ts`, and drop its screenshot in `src/assets/board/` (16:10 works best).
 - **The Rune Forge** stays sealed on purpose. A unit test fails if forge internals show up in the content.
-- **The résumés:** edit `resume/build.cjs` and run `npm run resume` to rebuild all three `.docx` files
-  (`node resume/build.cjs software --phone` builds one with the phone number). Export the PDFs from Word and copy the
-  ones the site links into `public/`.
+- **The résumé:** replace `public/AlexanderShahamResume.pdf` with the new PDF. Every résumé link on the site points
+  there, and `/resume` and the old game dev and software PDF addresses redirect to it (`public/_redirects`). Keep the
+  titles, dates and numbers in `career.ts` in step with it.
 
 ## Writing a breakdown
 

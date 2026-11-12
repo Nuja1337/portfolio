@@ -5,8 +5,7 @@
 .job h3{font-size:1.15rem; color:var(--accent)}
 html[data-skin="light"] .job h3{font-size:1.5rem; font-weight:500}
 .job .org{font-family:var(--ui); font-size:1.06rem; color:var(--text-2); margin-top:2px}
-.job ul{margin:9px 0 0; padding-left:18px; font-size:.96rem; max-width:66ch}
-.job li + li{margin-top:5px}
+.job .job-sum{margin:7px 0 0; font-size:.96rem; max-width:66ch}
 
 /* ---------- Loadout ---------- */
 .cols{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px}

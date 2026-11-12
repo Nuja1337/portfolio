@@ -10,10 +10,7 @@ import {
 const data: ConsoleData = {
   name: 'Alexander Shaham',
   email: 'ajshaham@gmail.com',
-  resumes: [
-    { label: 'Game dev résumé', href: '/AlexanderShahamResume-GameDev.pdf' },
-    { label: 'Software résumé', href: '/AlexanderShahamResume-Software.pdf' },
-  ],
+  resume: { label: 'Résumé', href: '/AlexanderShahamResume.pdf' },
   blog: '/blog',
   links: { github: 'https://github.com/Nuja1337', linkedin: 'https://www.linkedin.com/in/alexander-shaham/' },
   sections: [

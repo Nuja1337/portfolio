@@ -5,14 +5,12 @@ export const site = {
   studio: 'Chuken Studios',
   title: 'Alexander Shaham: gameplay and full-stack engineer',
   description:
-    'Alexander Shaham is a gameplay and full-stack engineer who builds real-time multiplayer games and the web tools around them. Building Runefall, a competitive arena RPG; formerly a frontend engineer at HCL BigFix.',
+    'Alexander Shaham is a gameplay and full-stack engineer who builds real-time multiplayer games and the web tools around them. Building Runefall, a competitive arena RPG; formerly a software engineer at HCL BigFix.',
   url: 'https://portfolio.ajshaham.workers.dev',
   location: 'Los Angeles',
   email: 'ajshaham@gmail.com',
-  resumes: [
-    { id: 'game', label: 'Game dev résumé', href: '/AlexanderShahamResume-GameDev.pdf' },
-    { id: 'software', label: 'Software résumé', href: '/AlexanderShahamResume-Software.pdf' },
-  ],
+  /** One résumé for every role. Replace the PDF in public/ to update it; the old game dev and software URLs redirect. */
+  resume: { label: 'Résumé', href: '/AlexanderShahamResume.pdf' },
   version: '5.0',
   links: {
     github: 'https://github.com/Nuja1337',

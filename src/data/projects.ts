@@ -17,6 +17,8 @@ import simsShot from '../assets/board/sims.webp';
 import draftsShot from '../assets/board/drafts.webp';
 import tallyShot from '../assets/board/tally.webp';
 import heartbeatShot from '../assets/board/heartbeat.webp';
+import dojoShot from '../assets/board/dojo.webp';
+import jobplsShot from '../assets/board/jobpls.webp';
 import portfolioShot from '../assets/board/portfolio.webp';
 import runefallShot from '../assets/runefall/gameplay.webp';
 import guildGolemShot from '../assets/board/guild-golem.webp';
@@ -47,7 +49,11 @@ export const decks = [
     title: 'Games',
     meta: 'Shipped, from game jams to the Play Store. The old builds are offline.',
   },
-  { id: 'tools', title: 'Tools and design', meta: 'This site, studio infrastructure, small tools, and design work.' },
+  {
+    id: 'tools',
+    title: 'Tools and design',
+    meta: 'A desktop app, this site, studio infrastructure, small tools, and design work.',
+  },
 ] as const;
 
 export type DeckId = (typeof decks)[number]['id'];
@@ -134,7 +140,7 @@ export const projects: readonly Project[] = [
     state: { kind: 'live', label: 'Live beta' },
     role: 'Solo, Oct 2026 to present',
     summary:
-      'A browser aim trainer that records where and how you miss. You click circles, follow sliders and spin spinners in time with a beat, on maps generated from a seed or in eight training modules that adjust their difficulty after every set. Ratings, trends and insights from your last 30 days of clicks point to a weak spot and a drill for it, and later plays show whether the drill carried over. Every play saves a replay you can scrub through, and each day brings a four-step practice plan and a shared daily map. Everything stays in the browser, with no account.',
+      'A browser aim trainer that records where and how you miss. You click circles, follow sliders and spin spinners in time with a beat, on maps generated from a seed or in eight training modules that adjust their difficulty after every set. Ratings, trends and insights from your last 30 days of clicks point to a weak spot and a drill for it, and later plays show whether the drill carried over. Every play saves a replay you can scrub through, and each day brings a four-step practice plan and a shared daily map. It comes in nine languages, and everything stays in the browser, with no account.',
     stack: ['TypeScript', 'React', 'Canvas', 'Web Audio', 'IndexedDB', 'Cloudflare Workers'],
     tags: ['web', 'tool', 'solo', 'live'],
     image: {
@@ -143,6 +149,23 @@ export const projects: readonly Project[] = [
       position: 'left center',
     },
     link: { label: 'Open', href: 'https://heartbeat.ajshaham.workers.dev' },
+  },
+  {
+    ref: '$dojo',
+    title: 'Dojo',
+    deck: 'web',
+    quality: 'legend',
+    state: { kind: 'live', label: 'Live' },
+    role: 'Solo, Nov 2026 to present',
+    summary:
+      'Two study programs in one app, Python and Korean, with reviews scheduled by spaced repetition (FSRS). Python has 114 lessons and 586 exercises graded by real Python running in the browser, plus 183 LeetCode problems that unlock after the lesson that teaches what each needs. Korean is built on the official 5,965-word learner vocabulary list, with 82 grammar lessons, 52 graded reading texts and a lookup that sees through particles and verb endings. It installs on a phone, works offline, and syncs progress between devices so one can’t overwrite another’s work.',
+    stack: ['JavaScript', 'Preact', 'Pyodide', 'PWA', 'Cloudflare Workers', 'D1'],
+    tags: ['web', 'tool', 'solo', 'live'],
+    image: {
+      src: dojoShot,
+      alt: 'A Dojo Python lesson on defining functions: the “Print a banner” exercise, a five-line solution in the code editor and “All 5 tests passed,” beside the lesson’s contents',
+      position: 'left top',
+    },
   },
   {
     ref: '$logs',
@@ -223,6 +246,23 @@ export const projects: readonly Project[] = [
       position: 'left top',
     },
     link: { label: 'Open', href: 'https://tally.ajshaham.workers.dev' },
+  },
+  {
+    ref: '$jobs',
+    title: 'jobpls',
+    deck: 'tools',
+    quality: 'legend',
+    state: { kind: 'live', label: 'Early version' },
+    role: 'Solo, Oct 2026 to present',
+    summary:
+      'A desktop app that finds jobs that fit, drafts each application from your résumé, notes and writing samples, fills the form in your own browser and tracks every application. It watches company career boards and open job APIs, and free rules and a keyword check run before any AI call, so only likely fits cost tokens. A style check catches stock phrasing before you see a draft, every filled field is read back before Submit, and any question your profile can’t answer waits for you. It works with free, paid or local AI models on your own key, and keeps everything in one local SQLite file.',
+    stack: ['TypeScript', 'Electron', 'React', 'SQLite', 'Playwright'],
+    tags: ['tool', 'solo'],
+    image: {
+      src: jobplsShot,
+      alt: 'The jobpls review queue with sample data: drafted applications ranked by fit, and a cover letter for a Senior Frontend Engineer role with its style score of 94 and the form answers below',
+      position: 'left top',
+    },
   },
   {
     ref: '$site',
