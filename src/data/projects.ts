@@ -22,6 +22,7 @@ import jobqueryShot from '../assets/board/jobquery.webp';
 import portfolioShot from '../assets/board/portfolio.webp';
 import runefallShot from '../assets/runefall/gameplay.webp';
 import guildGolemShot from '../assets/board/guild-golem.webp';
+import fakebookShot from '../assets/board/fakebook-marketplace.webp';
 
 /** Filter tags, in the order the filter bar shows them. */
 export const filters = [
@@ -430,6 +431,24 @@ export const projects: readonly Project[] = [
     stack: ['Figma', 'UI/UX'],
     tags: ['design', 'team'],
     offline: true,
+  },
+  {
+    ref: '$fake',
+    title: 'Fakebook Marketplace',
+    deck: 'tools',
+    quality: 'rare',
+    state: { kind: 'archived', label: 'Class project' },
+    role: 'Frontend developer, team of 3, 2022',
+    summary:
+      'A recreation of Facebook Marketplace, the final project for UCSC’s web development course (CSE 183). You browse listings by category, search them, and filter by distance, price and each category’s own fields, such as wheels for vehicles, and you can reply to a seller from a listing. My part was the React front end, built with Material UI, against the team’s Express and PostgreSQL API. The code stays private by course policy, so there’s a video walkthrough instead.',
+    stack: ['React', 'Material UI', 'Express', 'PostgreSQL'],
+    tags: ['web', 'team'],
+    image: {
+      src: fakebookShot,
+      alt: 'Fakebook’s marketplace page: filters for distance, price, wheels and electric beside the Vehicles and Electronics categories, with a forklift listing',
+      position: 'left top',
+    },
+    link: { label: 'Watch demo', href: 'https://www.youtube.com/watch?v=fYKFSpuTiNs' },
   },
   {
     ref: '$waiver',
