@@ -64,6 +64,10 @@ describe('board', () => {
     }
   });
 
+  it('gives every project with public code a second link, so its card never says Private', () => {
+    for (const p of projects.filter((p) => p.source)) expect(p.link, p.ref).toBeDefined();
+  });
+
   it('leads with four featured projects that each have a pitch, and keeps them off the board', () => {
     expect(featuredProjects).toHaveLength(4);
     for (const p of featuredProjects) {

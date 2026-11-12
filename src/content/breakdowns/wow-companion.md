@@ -51,7 +51,7 @@ guild's raider or trial role can still answer a night as pugs, and they stay out
 
 - A Today page with the next raid and the two weeks after it, with one-tap answers.
 - Each character's talents, Legacy plan, gear and sim on its own page, with share codes.
-- A sim for 28 specs across nine classes, for damage, tanking, and healing. It shows a range instead of one number, plus stat weights
+- A sim for 28 specs across nine classes, 23 damage and tank specs plus 5 healers. It shows a range instead of one number, plus stat weights
   and, for tanks, threat.
 - A gear page with a paper doll, totals and caps, and upgrades ranked by the sim's stat weights.
 

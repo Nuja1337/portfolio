@@ -18,7 +18,7 @@ import draftsShot from '../assets/board/drafts.webp';
 import tallyShot from '../assets/board/tally.webp';
 import heartbeatShot from '../assets/board/heartbeat.webp';
 import dojoShot from '../assets/board/dojo.webp';
-import jobplsShot from '../assets/board/jobpls.webp';
+import jobqueryShot from '../assets/board/jobquery.webp';
 import portfolioShot from '../assets/board/portfolio.webp';
 import runefallShot from '../assets/runefall/gameplay.webp';
 import guildGolemShot from '../assets/board/guild-golem.webp';
@@ -249,7 +249,7 @@ export const projects: readonly Project[] = [
   },
   {
     ref: '$jobs',
-    title: 'jobpls',
+    title: 'JobQuery',
     deck: 'tools',
     quality: 'legend',
     state: { kind: 'live', label: 'Early version' },
@@ -259,9 +259,26 @@ export const projects: readonly Project[] = [
     stack: ['TypeScript', 'Electron', 'React', 'SQLite', 'Playwright'],
     tags: ['tool', 'solo'],
     image: {
-      src: jobplsShot,
-      alt: 'The jobpls review queue with sample data: drafted applications ranked by fit, and a cover letter for a Senior Frontend Engineer role with its style score of 94 and the form answers below',
+      src: jobqueryShot,
+      alt: 'The JobQuery review queue with sample data: drafted applications ranked by fit, and a cover letter for a Senior Frontend Engineer role with its style score of 94 and the form answers below',
       position: 'left top',
+    },
+  },
+  {
+    ref: '$wa',
+    title: 'WeakAuras for Forever',
+    deck: 'tools',
+    quality: 'epic',
+    state: { kind: 'shipped', label: 'Open source' },
+    role: 'Solo, Nov 2026',
+    summary:
+      'Five WeakAuras I moved from the TBC Anniversary client to WoW Forever, which runs the retail engine with Midnight’s addon rules. Threat, buffs and power turn secret in combat there, so the fixed auras check every value before comparing it and fall back to what the game still shows, such as threat status or your own casts. Calls that are gone, like UnitBuff and GetTrackingTexture, now go through C_UnitAuras and C_Minimap. The Lua is tested outside the game against a mock whose secret values throw like the game’s, and each aura’s tests are checked by breaking its code on purpose.',
+    source: 'https://github.com/Nuja1337/weakauras-forever',
+    stack: ['Lua', 'WeakAuras', 'Python', 'Node.js'],
+    tags: ['tool', 'solo'],
+    link: {
+      label: 'How I ported them',
+      href: 'https://github.com/Nuja1337/weakauras-forever#from-anniversary-to-forever',
     },
   },
   {
