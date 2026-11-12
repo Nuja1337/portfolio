@@ -64,6 +64,11 @@ describe('board', () => {
     }
   });
 
+  it('keeps Fakebook Marketplace on the board, linked to its video walkthrough', () => {
+    const fake = boardProjects.find((p) => p.title === 'Fakebook Marketplace');
+    expect(fake?.link?.href).toBe('https://www.youtube.com/watch?v=fYKFSpuTiNs');
+  });
+
   it('gives every project with public code a second link, so its card never says Private', () => {
     for (const p of projects.filter((p) => p.source)) expect(p.link, p.ref).toBeDefined();
   });
