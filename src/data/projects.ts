@@ -257,8 +257,10 @@ export const projects: readonly Project[] = [
     role: 'Solo, Oct 2026 to present',
     summary:
       'A desktop app that finds jobs that fit, drafts each application from your résumé, notes and writing samples, fills the form in your own browser and tracks every application. It watches company career boards and open job APIs, and free rules and a keyword check run before any AI call, so only likely fits cost tokens. A style check catches stock phrasing before you see a draft, every filled field is read back before Submit, and any question your profile can’t answer waits for you. It works with free, paid or local AI models on your own key, and keeps everything in one local SQLite file.',
+    source: 'https://github.com/Nuja1337/jobquery',
     stack: ['TypeScript', 'Electron', 'React', 'SQLite', 'Playwright'],
     tags: ['tool', 'solo'],
+    link: { label: 'Download', href: 'https://github.com/Nuja1337/jobquery/releases/latest' },
     image: {
       src: jobqueryShot,
       alt: 'The JobQuery review queue with sample data: drafted applications ranked by fit, and a cover letter for a Senior Frontend Engineer role with its style score of 94 and the form answers below',
