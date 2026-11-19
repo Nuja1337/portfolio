@@ -394,6 +394,19 @@ export const projects: readonly Project[] = [
     image: { src: beastWithin, alt: 'Beast Within: hand-drawn comic panels of a man in a bar' },
     offline: true,
   },
+  {
+    ref: '$scrap',
+    title: 'Scrapper Bots',
+    deck: 'games',
+    quality: 'rare',
+    state: { kind: 'archived', label: 'Prototype' },
+    role: 'Game designer, team of 6, 2021',
+    summary:
+      'A turn-based tactics game on a hex grid. You command three bots, Big Pal, Scrapper and the Witch, against AI-run enemies, and every unit that is destroyed leaves a ruined machine your squad can harvest to refill armor and charge. Turn order follows each unit’s Threads, which water lowers and charged air raises, and each bot has two abilities and a Meltdown that spends the bot itself, such as the Witch reviving fallen allies. My role was design, on a team that built it through pair programming.',
+    stack: ['Unity', 'C#'],
+    tags: ['game', 'design', 'team'],
+    offline: true,
+  },
 
   // ---- Tools and design ----
   {
