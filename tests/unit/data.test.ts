@@ -44,6 +44,7 @@ describe('board', () => {
       '$puff',
       '$barf',
       '$beast',
+      '$scrap',
       '$cloato',
       '$guess',
       '$waiver',
