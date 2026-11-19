@@ -23,6 +23,7 @@ import portfolioShot from '../assets/board/portfolio.webp';
 import runefallShot from '../assets/runefall/gameplay.webp';
 import guildGolemShot from '../assets/board/guild-golem.webp';
 import fakebookShot from '../assets/board/fakebook-marketplace.webp';
+import scrapperShot from '../assets/board/scrapper-bots.webp';
 
 /** Filter tags, in the order the filter bar shows them. */
 export const filters = [
@@ -405,6 +406,10 @@ export const projects: readonly Project[] = [
       'A turn-based tactics game on a hex grid. You command three bots, Big Pal, Scrapper and the Witch, against AI-run enemies, and every unit that is destroyed leaves a ruined machine your squad can harvest to refill armor and charge. Turn order follows each unit’s Threads, which water lowers and charged air raises, and each bot has two abilities and a Meltdown that spends the bot itself, such as the Witch reviving fallen allies. My role was design, on a team that built it through pair programming.',
     stack: ['Unity', 'C#'],
     tags: ['game', 'design', 'team'],
+    image: {
+      src: scrapperShot,
+      alt: 'Scrapper Bots mid-match: three bots on a hex grid with Scrapper’s movement range marked, two red enemy machines across the board, the turn order along the top and each bot’s armor, health and charge on the right',
+    },
     offline: true,
   },
 
