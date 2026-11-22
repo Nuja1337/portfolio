@@ -25,6 +25,27 @@ describe('board', () => {
     }
   });
 
+  it('puts every filter but All in a group, and keeps each group together in the bar', () => {
+    for (const f of filters) expect(f.group === 'all', f.id).toBe(f.id === 'all');
+    const order = filters.map((f) => f.group).filter((g, i, all) => g !== all[i - 1]);
+    expect(new Set(order).size, order.join(' ')).toBe(order.length);
+  });
+
+  it('keeps Web apps and Tools apart, so the two filters never show the same card', () => {
+    for (const p of projects) expect(p.tags.includes('web') && p.tags.includes('tool'), p.ref).toBe(false);
+  });
+
+  it('tags every card solo or team, the same way its role line reads', () => {
+    for (const p of projects) {
+      expect(p.tags.includes('solo') !== p.tags.includes('team'), p.ref).toBe(true);
+      expect(p.tags.includes('team'), p.ref).toBe(/team of \d+/.test(p.role));
+    }
+  });
+
+  it('only tags live cards Live', () => {
+    for (const p of projects.filter((p) => p.tags.includes('live'))) expect(p.state.kind, p.ref).toBe('live');
+  });
+
   it('puts every card in a known deck, and keeps the games and tools on the board', () => {
     const known = new Set(decks.map((d) => d.id));
     for (const p of projects) expect(known.has(p.deck), p.ref).toBe(true);
@@ -74,17 +95,19 @@ describe('board', () => {
     for (const p of projects.filter((p) => p.source)) expect(p.link, p.ref).toBeDefined();
   });
 
-  it('leads with four featured projects that each have a pitch, and keeps them off the board', () => {
+  it('leads with four featured projects that each have a pitch, and keeps them on the board so filters find them', () => {
     expect(featuredProjects).toHaveLength(4);
     for (const p of featuredProjects) {
       expect(p, 'featured ref').toBeDefined();
       expect(p.pitch, p.ref).toBeTruthy();
       expect(p.image, p.ref).toBeDefined();
     }
-    for (const p of boardProjects) expect((featured as readonly string[]).includes(p.ref), p.ref).toBe(false);
-    expect(boardProjects.length + featuredProjects.length + projects.filter((p) => p.partOf).length).toBe(
-      projects.length,
-    );
+    for (const ref of featured)
+      expect(
+        boardProjects.some((p) => p.ref === ref),
+        ref,
+      ).toBe(true);
+    expect(boardProjects.length + projects.filter((p) => p.partOf).length).toBe(projects.length);
   });
 
   it('includes the web apps, and keeps the retired ones as history', () => {

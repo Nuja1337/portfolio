@@ -104,20 +104,45 @@ test.describe('home', () => {
     await expect(page.locator('meta[name="darkreader-lock"]')).toHaveCount(1);
   });
 
-  test('filters the board and hides empty decks', async ({ page }) => {
+  test('filters the board, combines filters from different groups, and hides empty decks', async ({ page }) => {
     await page.goto('/');
     const board = page.locator('#projects');
+    const button = (name: string) => board.getByRole('button', { name, exact: true });
+    const count = board.locator('[data-filter-count]');
     const total = await board.locator('[data-card]').count();
-    await board.getByRole('button', { name: 'Games', exact: true }).click();
-    const games = board.locator('[data-card]:not([hidden])');
-    await expect(games.first()).toBeVisible();
-    for (const tags of await games.evaluateAll((els) => els.map((e) => (e as HTMLElement).dataset.tags ?? ''))) {
-      expect(tags.split(' ')).toContain('game');
-    }
+    const shown = board.locator('[data-card]:not([hidden])');
+    const shownTags = () =>
+      shown.evaluateAll((els) => els.map((e) => ((e as HTMLElement).dataset.tags ?? '').split(' ')));
+    const titles = () => shown.locator('h3').allTextContents();
+
+    await button('Games').click();
+    await expect(shown.first()).toBeVisible();
+    for (const tags of await shownTags()) expect(tags).toContain('game');
+    expect(await titles()).toContain('Runefall');
     await expect(board.locator('[data-deck="web"]')).toBeHidden();
-    await expect(board.locator('[data-filter-count]')).toHaveText(`${await games.count()} of ${total} cards`);
-    await board.getByRole('button', { name: 'All', exact: true }).click();
-    await expect(board.locator('[data-filter-count]')).toHaveText(`${total} cards`);
+    await expect(count).toHaveText(`${await shown.count()} of ${total} cards`);
+
+    await button('Team').click();
+    await expect(button('Games')).toHaveAttribute('aria-pressed', 'true');
+    await expect(button('Team')).toHaveAttribute('aria-pressed', 'true');
+    for (const tags of await shownTags()) expect(tags).toEqual(expect.arrayContaining(['game', 'team']));
+    expect(await titles()).not.toContain('Runefall');
+
+    await button('Solo').click();
+    await expect(button('Team')).toHaveAttribute('aria-pressed', 'false');
+    for (const tags of await shownTags()) expect(tags).toEqual(expect.arrayContaining(['game', 'solo']));
+
+    await button('Games').click();
+    await expect(button('Games')).toHaveAttribute('aria-pressed', 'false');
+    for (const tags of await shownTags()) expect(tags).toContain('solo');
+
+    await button('All').click();
+    await expect(button('All')).toHaveAttribute('aria-pressed', 'true');
+    await expect(button('Solo')).toHaveAttribute('aria-pressed', 'false');
+    await expect(count).toHaveText(`${total} cards`);
+
+    await button('Live').click();
+    expect(await titles()).toEqual(expect.arrayContaining(['Guild Golem', 'Tally', 'Drafts']));
   });
 
   test('number keys press the action bar', async ({ page, isMobile }) => {

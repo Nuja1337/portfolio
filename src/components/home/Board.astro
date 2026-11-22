@@ -19,10 +19,19 @@ const published = new Set(
 
   <div class="filters" role="group" aria-label="Filter cards">
     <span class="lab">Filter</span>
-    {filters.map((f) => (
-      <button class="fbtn" type="button" data-filter={f.id} aria-pressed={f.id === 'all' ? 'true' : 'false'}>
-        {f.label}
-      </button>
+    {filters.map((f, i) => (
+      <Fragment>
+        {i > 0 && f.group !== filters[i - 1]!.group && <span class="fsep" aria-hidden="true" />}
+        <button
+          class="fbtn"
+          type="button"
+          data-filter={f.id}
+          data-group={f.group}
+          aria-pressed={f.id === 'all' ? 'true' : 'false'}
+        >
+          {f.label}
+        </button>
+      </Fragment>
     ))}
     <span class="fcount" data-filter-count aria-live="polite">
       {projects.length} cards
@@ -47,7 +56,7 @@ const published = new Set(
       </section>
     ))}
     <p class="empty" data-empty hidden>
-      No cards match that filter.
+      No cards match all of those filters.
     </p>
   </div>
   <p class="scroll-hint">Scroll the list to see every card.</p>
