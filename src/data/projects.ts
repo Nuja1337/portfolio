@@ -163,7 +163,7 @@ export const projects: readonly Project[] = [
     state: { kind: 'live', label: 'Live' },
     role: 'Solo, Nov 2026 to present',
     summary:
-      'Two study programs in one app, Python and Korean, with reviews scheduled by spaced repetition (FSRS). Python has 137 lessons and 653 exercises graded by real Python running in the browser, 209 LeetCode problems that unlock after the lesson that teaches what each needs, and 12 projects to build in your own editor, such as a replicated key-value server. Korean is built on the official 5,965-word learner vocabulary list, with 82 grammar lessons, 52 graded reading texts and a lookup that sees through particles and verb endings. It installs on a phone, works offline, and syncs progress between devices so one can’t overwrite another’s work.',
+      'Two study programs in one app, Python and Korean, with reviews scheduled by spaced repetition (FSRS). Python has 137 lessons, from a first print statement to system design, and 653 exercises graded by real Python running in the browser, 209 LeetCode problems that unlock after the lesson that teaches what each needs, and 12 projects to build in your own editor, such as a replicated key-value server. Korean is built on the official 5,965-word learner vocabulary list, with 82 grammar lessons, 52 graded reading texts and a lookup that sees through particles and verb endings. It installs on a phone, works offline, signs in with Google, and keeps each account’s progress in sync between devices so one device can’t overwrite another’s work.',
     stack: ['JavaScript', 'Preact', 'Pyodide', 'PWA', 'Cloudflare Workers', 'D1'],
     tags: ['web', 'solo', 'live'],
     image: {
