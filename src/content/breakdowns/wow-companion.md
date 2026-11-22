@@ -50,9 +50,9 @@ guild's raider or trial role can still answer a night as pugs, and they stay out
 ## For players
 
 - A Today page with the next raid and the two weeks after it, with one-tap answers.
-- Each character's talents, Legacy plan, gear and sim on its own page, with share codes.
-- A sim for 28 specs across nine classes, 23 damage and tank specs plus 5 healers. It shows a range instead of one number, plus stat weights
-  and, for tanks, threat.
+- Each character's talents, gear and sim on its own page, with share codes.
+- A sim engine for 28 specs across nine classes. The site sims the 23 damage and tank specs, and for now a healer's card shows
+  their healing from the guild's logs. A sim shows a range instead of one number, plus stat weights and, for tanks, threat.
 - A gear page with a paper doll, totals and caps, and upgrades ranked by the sim's stat weights.
 
 ## Logs and Sims, rebuilt
@@ -128,11 +128,11 @@ A nonce-based Content Security Policy and Trusted Types with no third-party orig
 ## By the numbers
 
 - Live a day after the first commit.
-- 1,700+ automated tests across 300+ files, 140+ of them running inside workerd against a migrated D1.
+- 2,900+ automated tests across 370+ files, 150+ of those files running inside workerd against a migrated D1.
 - A Playwright smoke test of the built Worker covers about 100 pages, in both themes, signed in and out, and on a phone,
   with zero CSP or Trusted Types violations and no serious axe findings (WCAG 2.2 AA).
 - A 186 MB raid log parsed and opened in 1.8 seconds in Chrome.
-- 19,000+ Forever items in the game data, and 150+ database migrations so far.
+- 19,000+ Forever items in the game data, and 140+ database migrations so far.
 
 ## What's next
 
