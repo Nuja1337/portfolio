@@ -24,6 +24,7 @@ import runefallShot from '../assets/runefall/gameplay.webp';
 import guildGolemShot from '../assets/board/guild-golem.webp';
 import fakebookShot from '../assets/board/fakebook-marketplace.webp';
 import scrapperShot from '../assets/board/scrapper-bots.webp';
+import studioShot from '../assets/board/studio-website.webp';
 
 /**
  * Filter tags, in the order the filter bar shows them. A tag replaces the other tag picked in its group, and tags from
@@ -110,7 +111,7 @@ export const projects: readonly Project[] = [
     tags: ['game', 'solo'],
     image: {
       src: runefallShot,
-      alt: 'Runefall in engine: a top-down 3v3 arena round in greybox, with team frames and an eight-slot ability bar',
+      alt: 'Runefall in engine: a top-down 3v3 arena round against bots in greybox, with both teams meeting at the center pillar, team and enemy frames, and the ten-slot ability bar',
       position: 'center 40%',
     },
   },
@@ -142,7 +143,7 @@ export const projects: readonly Project[] = [
     title: 'Heartbeat',
     deck: 'web',
     quality: 'legend',
-    state: { kind: 'live', label: 'Live beta' },
+    state: { kind: 'live', label: 'Live' },
     role: 'Solo, Oct 2026 to present',
     summary:
       'A browser aim trainer that records where and how you miss. You click circles, follow sliders and spin spinners in time with a beat, on maps generated from a seed or in eight training modules that adjust their difficulty after every set. Ratings, trends and insights from your last 30 days of clicks point to a weak spot and a drill for it, and later plays show whether the drill carried over. Every play saves a replay you can scrub through, and each day brings a four-step practice plan and a shared daily map. It comes in nine languages, and everything stays in the browser, with no account.',
@@ -430,6 +431,23 @@ export const projects: readonly Project[] = [
     tags: ['design', 'solo'],
     link: { label: 'Excerpt on request', href: mailto('Runefall worldbuilding excerpt') },
     partOf: '$run',
+  },
+  {
+    ref: '$studio',
+    title: 'Chuken Studios website',
+    deck: 'tools',
+    quality: 'legend',
+    state: { kind: 'progress', label: 'Unannounced' },
+    role: 'Solo, Nov 2026 to present',
+    summary:
+      'The studio’s website, built as two Cloudflare Workers from one repo. The public site introduces the studio and its first game without naming it, and takes contact and careers messages, checked by Turnstile and a rate limit and stored in D1. The team site is private behind Cloudflare Access, and its Worker checks each request’s Access token and the member list too, refusing everyone if a setting is missing. It holds the game’s design docs, an inbox for those messages, the member list with an audit log, and pages for daily playtest metrics, builds and CI runs, sent in from the game’s side. Before any deploy, a leak check scans the public build for the game’s codename and other secret terms, even when they’re split by markup or hidden behind HTML entities.',
+    stack: ['Astro', 'TypeScript', 'Cloudflare Workers', 'D1', 'Cloudflare Access', 'Turnstile'],
+    tags: ['web', 'solo'],
+    image: {
+      src: studioShot,
+      alt: 'The studio site’s home page: “We make games. The first one is on the way.” above a project file titled Unannounced Project, marked Classified',
+      position: 'left top',
+    },
   },
   {
     ref: '$pipe',

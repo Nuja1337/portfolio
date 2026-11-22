@@ -2,8 +2,8 @@
 title: 'Runefall'
 description: 'A classless competitive RPG of arenas and a five-player dungeon, where every player builds their own kit and opponents learn it only by surviving it.'
 image: '../../assets/runefall/gameplay.webp'
-imageAlt: 'Runefall in engine: round one of a 3v3 as the void closes in, with team frames, enemy frames, and the ability bar, in greybox'
-caption: 'In engine, from a September core-loop build: round one of a 3v3 as the void closes in. Enemy frames list the abilities you have discovered by facing them. Greybox art; the bar has since grown to all ten abilities.'
+imageAlt: 'Runefall in engine: round one of a 3v3 against bots, in greybox. My character casts Infernal Blast inside its area marker as both teams meet at the center pillar, with team frames, enemy frames, and the ten-slot ability bar'
+caption: 'In engine, from a November build: round one of a 3v3 against bots, as the two teams meet at the center pillar. Greybox art.'
 role: 'Solo: design, code, and production'
 timeline: 'Feb 2026 to present'
 stack: ['Godot 4.7 (.NET)', 'C#', '.NET 10', 'Steamworks', 'ASP.NET Core', 'SQLite', 'xUnit']
