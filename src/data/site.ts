@@ -2,7 +2,7 @@
 
 export const site = {
   name: 'Alexander Shaham',
-  studio: 'Chuken Studios',
+  studio: 'Chuuken Studios',
   title: 'Alexander Shaham: gameplay and full-stack engineer',
   description:
     'Alexander Shaham is a gameplay and full-stack engineer who builds real-time multiplayer games and the web tools around them. Building Runefall, a competitive arena RPG; formerly a software engineer at HCL BigFix.',

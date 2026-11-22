@@ -150,7 +150,7 @@ describe('Runefall', () => {
 
 describe('career and life', () => {
   it("follows the résumé's order, keeps the QA internship, and stays to one line a role", () => {
-    expect(jobs.map((j) => j.ref)).toEqual(['$chuken', '$bigfix', '$trader', '$freelance', '$qa', '$ucsc']);
+    expect(jobs.map((j) => j.ref)).toEqual(['$chuuken', '$bigfix', '$trader', '$freelance', '$qa', '$ucsc']);
     for (const j of jobs) if (j.summary) expect(j.summary.length, j.ref).toBeLessThanOrEqual(240);
   });
 

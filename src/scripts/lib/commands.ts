@@ -75,7 +75,7 @@ export function createCommands(data: ConsoleData): Record<string, Command> {
       summary: 'who built this',
       run(ctx) {
         ctx.print(
-          `${data.name}. Gameplay and full-stack engineer. Independent game developer, Chuken Studios. Los Angeles.`,
+          `${data.name}. Gameplay and full-stack engineer. Independent game developer, Chuuken Studios. Los Angeles.`,
         );
       },
     },
