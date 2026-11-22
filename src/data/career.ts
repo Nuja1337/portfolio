@@ -16,10 +16,10 @@ export interface Job {
 
 export const jobs: readonly Job[] = [
   {
-    ref: '$chuken',
+    ref: '$chuuken',
     when: 'FEB 2026 – PRESENT',
     title: 'Independent Game Developer',
-    org: 'Chuken Studios',
+    org: 'Chuuken Studios',
     breakdown: 'runefall',
     summary:
       'Building Runefall, a classless multiplayer RPG, on my own: a deterministic, server-authoritative 60 Hz simulation that runs 41 matches on one CPU core, online over Steam with lag compensation and reconnect, and 5,000+ xUnit tests.',

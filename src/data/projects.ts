@@ -434,7 +434,7 @@ export const projects: readonly Project[] = [
   },
   {
     ref: '$studio',
-    title: 'Chuken Studios website',
+    title: 'Chuuken Studios website',
     deck: 'tools',
     quality: 'legend',
     state: { kind: 'progress', label: 'Unannounced' },
@@ -451,7 +451,7 @@ export const projects: readonly Project[] = [
   },
   {
     ref: '$pipe',
-    title: 'Chuken Studios pipeline',
+    title: 'Chuuken Studios pipeline',
     deck: 'tools',
     quality: 'epic',
     state: { kind: 'live', label: 'Running' },

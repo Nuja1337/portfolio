@@ -1,4 +1,4 @@
-/** The Chuken console: the tilde key or the action bar's console slot opens it. DOM wiring only; the commands live in lib/commands.ts. */
+/** The Chuuken console: the tilde key or the action bar's console slot opens it. DOM wiring only; the commands live in lib/commands.ts. */
 import { createCommands, runCommand, type ConsoleContext, type ConsoleData } from './lib/commands';
 import { isTyping } from './actionbar';
 import { filterBoard } from './board';
@@ -61,7 +61,7 @@ export function initConsole(data: ConsoleData): void {
     panel!.hidden = false;
     setExpanded(true);
     if (!out!.childNodes.length)
-      ctx.print(`Chuken console v${document.documentElement.dataset.version ?? ''}. Type help.`, true);
+      ctx.print(`Chuuken console v${document.documentElement.dataset.version ?? ''}. Type help.`, true);
     input!.focus();
   }
 
