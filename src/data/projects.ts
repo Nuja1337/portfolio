@@ -1,6 +1,6 @@
 /**
- * Every project card. The four in `featured` lead the home page; the rest fill the Projects board in deck order,
- * live and in-progress work first.
+ * Every project card. The four in `featured` lead the home page. The Projects board shows every card that isn't part of
+ * another (featured ones too, so its filters find everything), in deck order, live and in-progress work first.
  */
 import type { ImageMetadata } from 'astro';
 import { mailto } from './site';
@@ -25,16 +25,19 @@ import guildGolemShot from '../assets/board/guild-golem.webp';
 import fakebookShot from '../assets/board/fakebook-marketplace.webp';
 import scrapperShot from '../assets/board/scrapper-bots.webp';
 
-/** Filter tags, in the order the filter bar shows them. */
+/**
+ * Filter tags, in the order the filter bar shows them. A tag replaces the other tag picked in its group, and tags from
+ * different groups combine, so Games and Team shows the team games.
+ */
 export const filters = [
-  { id: 'all', label: 'All' },
-  { id: 'game', label: 'Games' },
-  { id: 'web', label: 'Web apps' },
-  { id: 'tool', label: 'Tools' },
-  { id: 'design', label: 'Design' },
-  { id: 'live', label: 'Live' },
-  { id: 'solo', label: 'Solo' },
-  { id: 'team', label: 'Team' },
+  { id: 'all', label: 'All', group: 'all' },
+  { id: 'game', label: 'Games', group: 'kind' },
+  { id: 'web', label: 'Web apps', group: 'kind' },
+  { id: 'tool', label: 'Tools', group: 'kind' },
+  { id: 'design', label: 'Design', group: 'kind' },
+  { id: 'live', label: 'Live', group: 'status' },
+  { id: 'solo', label: 'Solo', group: 'size' },
+  { id: 'team', label: 'Team', group: 'size' },
 ] as const;
 
 export type FilterId = (typeof filters)[number]['id'];
@@ -126,7 +129,7 @@ export const projects: readonly Project[] = [
       'Guild management for World of Warcraft: Forever, with raids, roster, loot and a Discord bot, plus built-in combat logs and sims.',
     breakdown: 'wow-companion',
     stack: ['TypeScript', 'React Router', 'Hono', 'Cloudflare Workers', 'D1', 'R2'],
-    tags: ['web', 'tool', 'solo', 'live'],
+    tags: ['web', 'solo', 'live'],
     image: {
       src: guildGolemShot,
       alt: 'Guild Golem’s home page: “Everything for WoW Forever, except playing it,” beside an example Molten Core night with 38 of 40 signed up and each role counted against its target',
@@ -144,7 +147,7 @@ export const projects: readonly Project[] = [
     summary:
       'A browser aim trainer that records where and how you miss. You click circles, follow sliders and spin spinners in time with a beat, on maps generated from a seed or in eight training modules that adjust their difficulty after every set. Ratings, trends and insights from your last 30 days of clicks point to a weak spot and a drill for it, and later plays show whether the drill carried over. Every play saves a replay you can scrub through, and each day brings a four-step practice plan and a shared daily map. It comes in nine languages, and everything stays in the browser, with no account.',
     stack: ['TypeScript', 'React', 'Canvas', 'Web Audio', 'IndexedDB', 'Cloudflare Workers'],
-    tags: ['web', 'tool', 'solo', 'live'],
+    tags: ['web', 'solo', 'live'],
     image: {
       src: heartbeatShot,
       alt: 'A Heartbeat map in play: five numbered targets with approach rings and the path between them, under the score and accuracy',
@@ -162,52 +165,12 @@ export const projects: readonly Project[] = [
     summary:
       'Two study programs in one app, Python and Korean, with reviews scheduled by spaced repetition (FSRS). Python has 137 lessons and 653 exercises graded by real Python running in the browser, 209 LeetCode problems that unlock after the lesson that teaches what each needs, and 12 projects to build in your own editor, such as a replicated key-value server. Korean is built on the official 5,965-word learner vocabulary list, with 82 grammar lessons, 52 graded reading texts and a lookup that sees through particles and verb endings. It installs on a phone, works offline, and syncs progress between devices so one can’t overwrite another’s work.',
     stack: ['JavaScript', 'Preact', 'Pyodide', 'PWA', 'Cloudflare Workers', 'D1'],
-    tags: ['web', 'tool', 'solo', 'live'],
+    tags: ['web', 'solo', 'live'],
     image: {
       src: dojoShot,
       alt: 'A Dojo Python lesson on defining functions: the “Print a banner” exercise, a five-line solution in the code editor and “All 5 tests passed,” beside the lesson’s contents',
       position: 'left top',
     },
-  },
-  {
-    ref: '$logs',
-    title: 'Logs',
-    deck: 'web',
-    quality: 'rare',
-    state: { kind: 'archived', label: 'Retired' },
-    role: 'Solo, 2026',
-    summary:
-      'Combat-log analytics for World of Warcraft: Forever, rebuilt from my earlier Remix visualizer. Logs were parsed in the browser, in a Web Worker, into report, fight, and player pages, fight stories, and raid-team health for guild managers. Retired in October 2026 for Guild Golem, which rebuilt its log analysis inside the guild app.',
-    pitch: 'Parsed 1M+ event combat logs in a browser Web Worker into fight, player, and raid-team reports.',
-    breakdown: 'logs',
-    stack: ['TypeScript', 'React', 'Hono', 'Cloudflare Workers', 'D1'],
-    tags: ['web', 'tool', 'solo'],
-    image: {
-      src: logsShot,
-      alt: 'Logs fight page for an Onyxia kill: a timeline of boss health, adds, deaths, cooldowns, and hazards, with who took, healed, and dealt the most',
-      position: 'left top',
-    },
-    offline: true,
-  },
-  {
-    ref: '$sims',
-    title: 'Sims',
-    deck: 'web',
-    quality: 'rare',
-    state: { kind: 'archived', label: 'Retired' },
-    role: 'Solo, 2026',
-    summary:
-      'A combat simulator for World of Warcraft: Forever, with every known Forever change layered on the Classic Anniversary numbers. A deterministic, event-driven engine simmed DPS, tanking, healing, and scripted raid encounters on every CPU core through Web Workers, with stat weights and best-in-slot gear. Retired in October 2026 for Guild Golem, which rebuilt its sim on the game client’s own data.',
-    pitch: 'Deterministic, event-driven combat simulator that ran raid encounters on every CPU core, in the browser.',
-    breakdown: 'sims',
-    stack: ['TypeScript', 'React', 'Zustand', 'Web Workers', 'Cloudflare Workers'],
-    tags: ['web', 'tool', 'solo'],
-    image: {
-      src: simsShot,
-      alt: 'Sims results for a Fury Warrior: DPS summary, a DPS distribution histogram, damage over time, and damage by ability',
-      position: 'left top',
-    },
-    offline: true,
   },
   {
     ref: '$drafts',
@@ -221,7 +184,7 @@ export const projects: readonly Project[] = [
     pitch: 'Real-time League of Legends and Dota 2 draft rooms that suggest picks and bans, with an AI draft coach.',
     source: 'https://github.com/Nuja1337/drafts',
     stack: ['TypeScript', 'React', 'Hono', 'Durable Objects', 'D1', 'KV', 'Workers AI'],
-    tags: ['web', 'tool', 'solo', 'live'],
+    tags: ['web', 'solo', 'live'],
     image: {
       src: draftsShot,
       alt: 'A Drafts room mid-draft: both teams’ bans and picks, the champion grid, and the analysis panel ranking what the enemy team most likely picks next',
@@ -241,13 +204,53 @@ export const projects: readonly Project[] = [
     pitch: 'A local-first training and nutrition log that works offline and syncs across devices without an account.',
     source: 'https://github.com/Nuja1337/tally',
     stack: ['JavaScript', 'IndexedDB', 'PWA', 'Cloudflare Workers', 'D1'],
-    tags: ['web', 'tool', 'solo', 'live'],
+    tags: ['web', 'solo', 'live'],
     image: {
       src: tallyShot,
       alt: "Tally's Today page: calorie and protein rings, the day's plan, and logged meals",
       position: 'left top',
     },
     link: { label: 'Open', href: 'https://tally.ajshaham.workers.dev' },
+  },
+  {
+    ref: '$logs',
+    title: 'Logs',
+    deck: 'web',
+    quality: 'rare',
+    state: { kind: 'archived', label: 'Retired' },
+    role: 'Solo, 2026',
+    summary:
+      'Combat-log analytics for World of Warcraft: Forever, rebuilt from my earlier Remix visualizer. Logs were parsed in the browser, in a Web Worker, into report, fight, and player pages, fight stories, and raid-team health for guild managers. Retired in October 2026 for Guild Golem, which rebuilt its log analysis inside the guild app.',
+    pitch: 'Parsed 1M+ event combat logs in a browser Web Worker into fight, player, and raid-team reports.',
+    breakdown: 'logs',
+    stack: ['TypeScript', 'React', 'Hono', 'Cloudflare Workers', 'D1'],
+    tags: ['web', 'solo'],
+    image: {
+      src: logsShot,
+      alt: 'Logs fight page for an Onyxia kill: a timeline of boss health, adds, deaths, cooldowns, and hazards, with who took, healed, and dealt the most',
+      position: 'left top',
+    },
+    offline: true,
+  },
+  {
+    ref: '$sims',
+    title: 'Sims',
+    deck: 'web',
+    quality: 'rare',
+    state: { kind: 'archived', label: 'Retired' },
+    role: 'Solo, 2026',
+    summary:
+      'A combat simulator for World of Warcraft: Forever, with every known Forever change layered on the Classic Anniversary numbers. A deterministic, event-driven engine simmed DPS, tanking, healing, and scripted raid encounters on every CPU core through Web Workers, with stat weights and best-in-slot gear. Retired in October 2026 for Guild Golem, which rebuilt its sim on the game client’s own data.',
+    pitch: 'Deterministic, event-driven combat simulator that ran raid encounters on every CPU core, in the browser.',
+    breakdown: 'sims',
+    stack: ['TypeScript', 'React', 'Zustand', 'Web Workers', 'Cloudflare Workers'],
+    tags: ['web', 'solo'],
+    image: {
+      src: simsShot,
+      alt: 'Sims results for a Fury Warrior: DPS summary, a DPS distribution histogram, damage over time, and damage by ability',
+      position: 'left top',
+    },
+    offline: true,
   },
   {
     ref: '$jobs',
@@ -480,7 +483,7 @@ export const projects: readonly Project[] = [
     summary:
       "One-tap guest waivers for a gym's guest pass. Save a preset for each guest, and they submit the waiver with a button instead of refilling a long form that never autocompleted well.",
     stack: ['TypeScript', 'React'],
-    tags: ['web', 'tool', 'solo'],
+    tags: ['web', 'solo'],
     offline: true,
   },
   {
@@ -493,15 +496,15 @@ export const projects: readonly Project[] = [
     summary:
       'Enter your Wordle guesses and which letters landed in the right or wrong spot, and it lists every five-letter word still possible, weighted by how common each word is so the likeliest answers come first.',
     stack: ['React', 'Material UI'],
-    tags: ['web', 'tool', 'solo'],
+    tags: ['web', 'solo'],
     offline: true,
   },
 ];
 
-/** The home page's lead row, in order. Everything else goes on the Projects board. */
+/** The home page's lead row, in order. They're on the Projects board too. */
 export const featured = ['$run', '$wow', '$tally', '$drafts'] as const;
 export const featuredProjects = featured.map((ref) => projects.find((p) => p.ref === ref)!);
-export const boardProjects = projects.filter((p) => !(featured as readonly string[]).includes(p.ref) && !p.partOf);
+export const boardProjects = projects.filter((p) => !p.partOf);
 
 export const liveApps = projects.filter((p) => p.deck === 'web' && p.state.kind === 'live' && p.ref !== '$site').length;
 export const gamesShipped = projects.filter((p) => p.deck === 'games' && p.state.kind === 'shipped').length;

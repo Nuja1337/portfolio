@@ -50,14 +50,14 @@ Workers" template) and `CLOUDFLARE_ACCOUNT_ID`.
 
 Everything the site says lives in `src/data/`, one file per section:
 
-| File          | Section                                                                      |
-| ------------- | ---------------------------------------------------------------------------- |
-| `site.ts`     | Name, links, résumé path, and the section list behind the nav and action bar |
-| `runefall.ts` | Milestone status, the hero card's spec table, and design notes               |
-| `projects.ts` | Every card: the four featured ones, then the Projects board by deck          |
-| `career.ts`   | Experience, one line a role (the résumé has the detail)                      |
-| `loadout.ts`  | Skills                                                                       |
-| `life.ts`     | About                                                                        |
+| File          | Section                                                                           |
+| ------------- | --------------------------------------------------------------------------------- |
+| `site.ts`     | Name, links, résumé path, and the section list behind the nav and action bar      |
+| `runefall.ts` | Milestone status, the hero card's spec table, and design notes                    |
+| `projects.ts` | Every card on the Projects board by deck, the four featured ones, and the filters |
+| `career.ts`   | Experience, one line a role (the résumé has the detail)                           |
+| `loadout.ts`  | Skills                                                                            |
+| `life.ts`     | About                                                                             |
 
 - **Runefall progress:** change a milestone's `status` in `runefall.ts` (`done`, `now`, or `todo`). The milestone
   track and the stat line follow.
