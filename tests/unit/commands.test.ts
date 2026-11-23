@@ -12,7 +12,7 @@ const data: ConsoleData = {
   email: 'ajshaham@gmail.com',
   resume: { label: 'Résumé', href: '/AlexanderShahamResume.pdf' },
   blog: '/blog',
-  links: { github: 'https://github.com/Nuja1337', linkedin: 'https://www.linkedin.com/in/alexander-shaham/' },
+  links: { github: 'https://github.com/Nuja1337', discord: 'https://discordapp.com/users/249029416590639107' },
   sections: [
     { id: 'top', label: 'Top' },
     { id: 'projects', label: 'Projects' },
@@ -126,6 +126,16 @@ describe('console commands', () => {
     expect(lines[1]).toBe('Alexander rolls 6 (1-6)');
     run('roll -3', ctx);
     expect(lines[2]).toBe('Alexander rolls 100 (1-100)');
+  });
+
+  it('contact lists the same three ways to reach me as the Contact section', () => {
+    const { ctx, lines } = fakeContext();
+    run('contact', ctx);
+    expect(lines).toEqual([
+      'ajshaham@gmail.com -> mailto:ajshaham@gmail.com',
+      'github.com/Nuja1337 -> https://github.com/Nuja1337',
+      'Message me on Discord -> https://discordapp.com/users/249029416590639107',
+    ]);
   });
 
   it('hire opens mail with a subject', () => {
