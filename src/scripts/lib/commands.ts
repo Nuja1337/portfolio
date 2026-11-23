@@ -34,7 +34,7 @@ export interface ConsoleData {
   email: string;
   resume: { label: string; href: string };
   blog: string;
-  links: { github: string; linkedin: string };
+  links: { github: string; discord: string };
   sections: readonly { id: string; label: string; href?: string }[];
   filters: readonly string[];
 }
@@ -167,8 +167,8 @@ export function createCommands(data: ConsoleData): Record<string, Command> {
       summary: 'ways to reach me',
       run(ctx) {
         ctx.link(data.email, `mailto:${data.email}`);
-        ctx.link(data.links.linkedin.replace(/^https:\/\/(www\.)?/, '').replace(/\/$/, ''), data.links.linkedin);
         ctx.link(data.links.github.replace(/^https:\/\//, ''), data.links.github);
+        ctx.link('Message me on Discord', data.links.discord);
       },
     },
     hire: {

@@ -14,7 +14,6 @@ export const site = {
   version: '5.0',
   links: {
     github: 'https://github.com/Nuja1337',
-    linkedin: 'https://www.linkedin.com/in/alexander-shaham/',
     discord: 'https://discordapp.com/users/249029416590639107',
   },
 } as const;
