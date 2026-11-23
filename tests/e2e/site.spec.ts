@@ -192,14 +192,13 @@ test.describe('home', () => {
     await expect(page.locator('#blog')).toHaveCount(0);
   });
 
-  test('links the one résumé PDF from the hero, Experience and Contact', async ({ page, request }) => {
+  test('links the one résumé PDF from the hero and Experience', async ({ page, request }) => {
     await page.goto('/');
     await expect(page.locator('.hero .actions a', { hasText: 'Résumé' })).toHaveAttribute(
       'href',
       '/AlexanderShahamResume.pdf',
     );
-    for (const section of ['#experience', '#contact'])
-      await expect(page.locator(`${section} a[href="/AlexanderShahamResume.pdf"]`), section).toHaveCount(1);
+    await expect(page.locator('#experience a[href="/AlexanderShahamResume.pdf"]')).toHaveCount(1);
     await expect(page.locator('a[href*="AlexanderShahamResume-"]')).toHaveCount(0);
     const res = await request.get('/AlexanderShahamResume.pdf');
     expect(res.ok()).toBe(true);

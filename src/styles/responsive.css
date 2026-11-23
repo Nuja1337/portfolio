@@ -11,11 +11,12 @@
 @media (max-width:1000px){
   .hero{grid-template-columns:1fr; gap:34px}
   .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .now-list,.ach-stats,.links{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .now-list,.ach-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
   .cols{grid-template-columns:1fr}
 }
 @media (max-width:860px){
   .subcards{grid-template-columns:1fr}
+  .links{grid-template-columns:1fr} /* three contact cells stay in one row until they would get too narrow */
   .job{grid-template-columns:1fr; gap:4px}
   .job .when{padding-top:0}
   .nav .wrap{flex-wrap:wrap; padding-top:11px; padding-bottom:11px; gap:9px 20px}
@@ -32,7 +33,7 @@
   .ach-card.span-2,.ach-card.span-3{grid-column:auto}
   .ach-card.tall{grid-row:auto}
   .ach-photo{aspect-ratio:4/3; flex:none}
-  .now-list,.links{grid-template-columns:1fr}
+  .now-list{grid-template-columns:1fr}
   .contact-head{padding:20px}
   .links{padding:18px 20px 22px}
   .spec th{width:104px; white-space:normal}
